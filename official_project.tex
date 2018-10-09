@@ -1,0 +1,1927 @@
+\documentclass[a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,pifont}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage{url}
+\bibliographystyle{plain}
+\usepackage[export]{adjustbox}
+\usepackage{subcaption}
+\usepackage{floatrow}
+\usepackage[rightcaption]{sidecap}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\usepackage{framed}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{graphicx}
+\graphicspath{ {/Volumes/DISSO/image} }
+\usepackage[titletoc,toc,title]{appendix}
+\usepackage{wrapfig}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\usepackage{amssymb}
+
+\title{MA59: Mini project Nonlinear System with Mathematical Biology}
+\author{Chun Kit Tsoi, Nevin Leal,Luigi Giulio Grandi}
+
+\begin{document}
+\begin{figure}[b]
+\includegraphics[scale=0.6]{UKC}
+\label{fig:lgfigure}
+\end{figure} 
+\maketitle
+
+\tableofcontents
+
+
+\chapter{Abstract}
+\chapter{Introduction}
+In this project, we will study the relationship between Mathematical Biology and Differential Equations Systems. We will see how complex biological and biochemical processes can develop a mathematical model that helps simplify these processes which will, in turn, make them easier to understand.  Furthermore, we will explore more advanced topics such as the Michaelis-Menten model,  and how there is the correlation between substrate velocity and maximum velocity.  This project, we will also explore the unique cases in Reaction Kinetics, such as how multiple steady states are formed in a system and what impact this has on the behaviour of phase portraits. Another fact to be considered is that we will explore more basic mathematical concepts applied to the real world . An example which we have included is population models and what factors cause the population to increase and decrease over certain amounts of time. This is a form of a nonlinear system and is a mathematical way to describe the vast majority of the phenomena in the World.
+In order for us to study  Reaction Kinetics in Mathematical Biology , we must further our understanding of basic mathematical topics in great detail. We will do this by studying the topics of  Linear systems, Nonlinear systems and Scalar equations in the first few chapters.  This will help provide us with strong foundations to learn Reaction Kinetics.
+
+\chapter{The 1st order Ordinary Differential Equation system(ODE)}
+\section{Introduction of the 1st order ODE system}
+\medskip
+An Ordinary Differential Equation (ODE) is a differential equation containing one or more function of one dependent variable and its  derivatives.
+The ODE is particularly important in biology.  It can be used to find, such as , the the change of body temperature, bacterial populations and the enzyme reaction. Throughout this chapter, we will use information from [4] to assist us with basic knowledge of the topic. 
+
+\vspace{4mm}
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{defn} \label{def1}
+let y be a dependent variable and $t$ an independent variable, and $y = f(x)$ is an unknown function of $t$. The notation for differentiation varies depending upon the author and upon which notation is most useful for the task at hand.  
+\newline
+\end{defn}
+\end{mdframed}
+The form of the ODE is shown as following,
+\smallskip
+\begin{align}
+\label{equ:1.1}
+\begin{split}
+\dfrac{dy_1}{dt}=f_1(t,y_1,y_2,...,y_n) , \hspace{5mm} &y_1(t_0)=y_{1,0} ,
+\\
+\dfrac{dy_2}{dt}=f_2(t,y_1,y_2,...y_n) ,\hspace{5mm} &y_2(t_0)=y_{2,0},
+\\
+....
+\\
+\dfrac{dy_n}{dt}=f_n(t,y_1,y_2,...y_n), \hspace{5mm} &y_n(t_0)=y_{n,0}.
+\end{split}
+\end{align}
+This is known as  canonical form.
+The component of system is determined by the number of dependent variables. When the initial conditions are given at a common point, $t_0$, then the set of (\ref{equ:1.1}) has a solution of the following form:
+\begin{align}
+\begin{split}
+ \ y_{1}=F_1(t), 
+\\
+ \ y_{2}=F_2(t),
+\\....
+\\
+ \ y_{n}=F_n(t).
+\end{split}
+\end{align}
+The system equations are represented by
+\begin{align}
+\begin{split}
+\dfrac{dy}{dt}&=f(t,y),
+\\
+y(t_0)&=y_0,
+\\
+y&=F(t),
+\end{split}
+\end{align}
+where $y(t_0)=y_0$ is the vector of initial conditions and $y=F(t)$ is the  solution.
+  
+\section{The 1st Order Differential Equation System}
+Some of the information of [13] will be used in this section, if there are any further reading is required.
+In this section we will discuss in detail about the basic idea of ODEs and its solving techniques, in order for us to apply this to mathematical biology.
+Consider the first-order ODE model
+\begin{equation}
+\label{equ:1.4}
+y'=f(t,y),
+\end{equation}
+where $y$ is a function of $t$ and the initial condition at $t_0=0$ is 
+\begin{equation}
+\label{equ:1.5}
+y(0)=y_0.
+\end{equation}
+First of all , we can check if (\ref{equ:1.4}) and (\ref{equ:1.5}) have a solution by the Existence and Uniqueness Theorem.
+A steady state of a differential equation is the solution which does not vary with $t$.
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{defn} \label{def1}
+Suppose that $f(t,y)$ are continuous on a closed rectangle $R$ of $t-y$ plane. If $(t_0,y_0)\in{\Bbb R}$ then the Initial Value Problem
+$$y'=f(t,y) , \quad y(t_0)=y_0.$$
+This has a unique solution on some $t$-interval containing $t_0$.
+\end{defn}
+\end{mdframed}
+If (\ref{equ:1.4}) and (\ref{equ:1.5}) satisfies Definition 2, we can solve the ODE analytically and can find its general solution. The general solution of a given 1st order ODE (\ref{equ:1.4}), can locally be written  in the form $\phi(t,y)=c$, where $\phi(t,y)$ is the first integral and $c$ is an arbitrary constant. 
+However, there are a lot of ways to solve 1st order ODEs. An example of this would be Separating variables using the Integrating factor by substitution.We have come across this previously in Stage 1. We will now briefly be discussing these techniques.
+
+\textbf{(a) Separating the Variables}: If an ODE is in the form
+\begin{equation}
+\label{equ:1.6}
+\dfrac{dy}{dt}=\dfrac{g(t)}{h(y)}.
+ \end{equation}
+and it is in any neighbourhood where $g(t) \neq 0$ then the general solution is 
+\begin{equation}
+\label{equ:1.7}
+\int h(y) dy= \int g(t) dt +c.
+\end{equation}
+\textbf{(b) Integrating Factor}: If an ODE is in the form
+\begin{equation}
+\label{equ:1.8}
+y'+p(t)y = g(t),
+\end{equation}
+
+then we use the integrating factor  $I(x)=e^{\int p(t)dt}$, and introduce a new dependent variable $z=I(x)y$. Thus, the original ODE is equivalent to 
+\begin{equation}
+\label{equ:1.9}
+z'=I(x)b(x),
+\end{equation} 
+where the equation becomes separable like (\ref{equ:1.7}).
+
+\section{Analytical solution of 2 component or more of linear ODE}
+
+\subsection{General Solutions for first Order ODEs of two Components}
+\label{General Solutions for first Order ODEs of two Components}
+Some of the information of [3] will be used in this section, if there are any further reading is required.
+If a 1st order ODE is in the form $\dot{x}=Ax$ with $x\in{\Bbb R^n}$, and the square matrix ,$A$, is a diagnosable\footnote{If $A = (a_{ij})$ is a square matrix $n \times n$, then the entries $a_{ii}$ are the diagonal entries. A square matrix is known to be diagonal if all non-diagonal entries are zero.}, then A has the general solution of the matrix form
+\begin{equation}
+X(t)=\sum_{i=1}^{n}V_i{x_i(0)e^{\lambda_i t}}=
+\sum_{i=1}^{n}C_ie^{\lambda_i t},
+\end{equation}
+where $\lambda_i$ are the eigenvalues of $A$, $V_i\in{\Bbb R^n}$ are the corresponding eigenvectors of $A$ and n is the number of components. Since we have come across this in stage 1, we will explain it  briefly by giving an example. 
+Consider the ODE system
+\begin{align}
+\begin{split}
+\label{equ:1.11}
+&\dfrac{ds}{dt}=-ks+kp,
+\\
+&\dfrac{dp}{dt}=ks-kp.
+\end{split}
+\end{align}
+This is an two components system since there are two dependent variables $s$ and $p$.
+To solve (\ref{equ:1.11}), we can write the equation in the form $\dot{x}=Ax$, where 
+\begin{equation}
+A = 
+\left(
+\begin{array}{cc}
+s & p\\
+
+\end{array}
+\right)=
+\left(
+\begin{array}{cc}
+-k & k\\
+k & -k\\
+\end{array}
+\right).
+\end{equation}
+We use the change of variables  method to diagonalise the matrix $A$.
+To solve two components of 1st order differential equation, we need to find its eigenvalues and eigenvectors.
+\medskip
+We rewrite (\ref{equ:1.11}) in the form
+\begin{equation}
+\left(
+\begin{array}{c}
+\dfrac{ds}{dt}\\
+\dfrac{dp}{dt}\\
+\end{array} 
+\right)= 
+\left(
+\begin{array}{cc}
+-1 & 1\\
+1 & -1\\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+s \\
+p \\
+\end{array}
+\right).
+\end{equation}
+To get  the eigenvalues, we have to solve $det(A-\lambda I)=0$ which we see in the following matrix
+\begin{equation}
+\label{equ:1.14}
+det
+\left(
+\begin{array}{cc}
+-1-\lambda & 1\\
+1 & -1-\lambda\\
+\end{array}
+\right)
+=0,
+\end{equation}
+where the solution is
+\begin{equation}
+\\ \lambda_1=0 
+, \quad \lambda_2=-2.
+\end{equation}
+We now have the solutions in the form $Av=\lambda v$ for each eigenvalue $\lambda$, 
+\begin{equation}
+v_1=\dfrac{1}{\sqrt{2}}
+\left(
+\begin{array}{c}
+1\\
+1\\
+\end{array}
+\right)
+\\,\quad
+ v_2=\dfrac{1}{\sqrt{2}}
+\left(
+\begin{array}{c}
+1\\
+-1\\
+\end{array}
+\right),
+\end{equation}
+where $v_1$ is corresponding to $\lambda_1$ and $v_2$ is corresponding to $\lambda_2$.
+From both $v_1$ and $v_2$ of $A$, we create a new matrix $V$ where $v_1$ is the first column of the matrix and $v_2$ is the second column. As shown below
+\begin{equation}
+\label{equ:1.41}
+V=
+\left(
+\begin{array}{cc}
+v_1 & v_2
+\end{array} 
+\right)
+= \dfrac{1}{\sqrt{2}}
+\left(
+\begin{array}{cc}
+1 & 1\\
+1 & -1\\
+\end{array}
+\right).
+\end{equation}
+We then  diagonalize $A$, which gives us the diagonal matrix $D$ equal to
+\begin{equation}
+V^{-1}AV=
+\left(
+\begin{array}{cc}
+\lambda_1 & 1\\
+1 & \lambda_2\\
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cc}
+0 & 0\\
+0 & -2\\
+\end{array}
+\right).
+\end{equation}
+A 1st order DE of a two component system is in the form $\dfrac{dx}{dt}=Ax$, where $A$ is a diagonalisable matrix. By definition, we know the general solution is a linear combination is exponential form $e^{\lambda_i t}$, and $\lambda_i$ are the eigenvalues of the matrix $A$, this can be represented in the following
+\begin{equation}
+X(t)=v_1s(0)e^{\lambda_1 t} + v_2p(0)e^{\lambda_2 t} = C_1e^{\lambda_1 t}+C_2e^{\lambda_2 t},
+\end{equation} 
+where $C_i$s are constants. 
+Therefore, the general solution in our case is 
+\begin{equation}
+\label{equ:3.201}
+X(t)= \dfrac{1}{\sqrt{2}}\left( \left(
+\begin{array}{c}
+1 \\
+1 \\
+\end{array}
+\right)
++
+\left(
+\begin{array}{c}
+1 \\
+-1 \\
+\end{array}
+\right)e^{-2t}\right)
+.
+\end{equation}
+We will use this result as example in the future (see section (\ref{Reversible Kinetic Reaction}))
+
+
+
+\chapter{Nonlinear Systems}
+A system can be defined in many different ways, here is one of them. A system is a set of related elements working together to give a joint outcome. There are essentially two types of systems: linear and nonlinear systems.In this section, the reference [11] and [10] are used.
+
+It is often said that nonlinear systems describe the vast majority of the phenomena in our World. In a nonlinear system the output is not directly proportional to the input. It is not considered linear when there is at least one variable with the exponent greater than one and/or there is a product of variables in one of the elements. World of nonlinearity is considered to be highly illogical.
+
+\textbf{Cite properly \& understand this shit}
+In his book, nonlinear systems, 1992, P.G. Drazin defines them as a set of nonlinear equations, they may be algebraic, functional, ordinary differential, partial differential, integral or a combination of these. They may depends on parameters.
+
+Due to the lack of understanding in them, nonlinear systems are often defined by what they are not, meaning that a nonlinear system is a system that fails to be linear, and unlike linear systems, they are very unpredictable and chaotic.
+
+Here, we will see a example of nonlinear systems - Population Models.
+\section{Population Models}
+Nonlinear systems can be applied to many different fields. One of these is population growth/decay.
+
+There are different models to explain this phenomena, from the more classical to more complex models.
+The easiest model is single specie model, where $N(t)$ denotes the population at time $t$ and
+\begin{equation}
+\frac{dN}{dt}=births-deaths+migration.
+\end{equation} 
+If births and migration are higher than the number of deaths then the system is set to grow exponentially. Otherwise, it eventually will decay to  zero.
+From simpler systems, more precise models were presented like self limiting models. As the $\dfrac{birth}{death}=r$ model could grow exponentially to infinity and was considered obsolete, so the carrying capacity (or limit) $K$ is added to the ratio $r$, giving the following equation
+\begin{equation}
+\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right),
+\end{equation}
+where both $r$ and $K$ are constant greater than zero, and $r$ is considered to be the linear birth rate.
+As $t\rightarrow \infty$ the population will tend to K no matter what initial value we get, as, when $t=0$, we have initial value $N_0$, giving the equation
+\begin{equation}
+N(t)=\frac{N_0Ke^{rt}}{K+N_0(e^{rt}-1)}=\frac{N_0K}{Ke^{-rt}+N_0(1-e^{-rt})}\rightarrow \frac{N_0K}{N_0}\quad as \quad t\rightarrow\infty.
+\label{eq:lg50}
+\end{equation}
+
+
+\begin{figure}[h]
+\includegraphics[scale=0.6]{elle}
+
+\caption{The graphs show how, without a carrying capacity, the population will grow to infinity (left), while given a carrying capacity the population will slowly reduce the growth until it gets to the maximum population (right).[16]}
+\label{fig:lgfigure}
+\end{figure} 
+
+Another important parameter to be considered is the harvesting ratio, which is the number of individuals removed form the population. This will be the subtraction of a constant, say $E$, multiplied by the total population from the equation (\ref{eq:lg50}), giving
+\begin{equation}
+\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-EN.
+\end{equation}
+As the previous model states, $K$ is the carrying capacity, that is the maximum population that can be sustained, and $r$ denotes the growth rate. If it happens that $E>r$ then the harvesting constant is bigger than the growth rate resulting in the extinction of the population $N$.
+
+\begin{figure}[h]
+\includegraphics[scale=0.6]{lg1}
+
+\caption{This graph shows how the population will die out if the harvesting constant is bigger than the growth rate like the bottom lines, or how, once reached the maximum capacity it will fluctuate.[15]}
+\label{fig:lgfigure1}
+\end{figure}
+
+An autonomous system of differential equation will be in the form
+\begin{equation}
+\frac{du}{dt}=f(u,v), \quad \frac{dv}{dt}=g(u,v).
+\end{equation}
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{defn}
+\label{lgdef1}
+The phase trajectories or curves will be the result of the division of the two:
+\begin{equation}
+\frac{dv}{du}=\frac{g(u,v)}{f(u,v)}.
+\end{equation}
+\end{defn}
+\end{mdframed}
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{defn}
+\label{lgdef2}
+The plane that contains these phase trajectories is called phase plane.
+\end{defn}
+\end{mdframed}
+A steady state its when there is not a singular solution, these points are described by $f(x^*,y^*)=0=g(x^*,y^*)$
+
+Different type of species can interact and affect positively or negatively on a different specie. There are mainly three different types of relation:
+
+(a) When the presence of a species reduce the growth rate of another species, then the system is known as the predator-prey system.
+
+(b) If the growth rate of both species are decreased by the presence of each other then the system is called the competition system.
+
+(c) If  both species' growth rate is enhanced to increase by the presence of the other then the system is called mutualism.
+\\
+\\
+Considering case (a), in absence of a predator in the predator-prey system, the prey population will increase. The presence of a predator will reduce the number of prey, and also increase their population. However, in the absence of prey even the number of predators will decrease. These factors contribute to the following equation:
+\begin{equation}
+\frac{dN}{dt}=N(a-bP), \quad \frac{dP}{dt}=P(cN-d),
+\end{equation}
+where $a,b,c$ and $d$ are positive constants.
+\begin{figure}[h]
+\includegraphics[scale=0.6]{lg2}
+\caption{Form the graph, we can deduce, that as the population of the prey increases, so does the population of the predators. However, as the number of the predators is higher it will affect the population of the prey resulting in a reduction in their population, which will then imply a cut of the predator's population.[14]}
+\label{lgfigure2}
+\end{figure}
+
+In a Competition system (case (b)), the equations will differ as both species are endangered by the other. Therefore,
+\begin{equation}
+\frac{dN_1}{dt}=r_1N_1(1-a_{12}N_2), \quad \frac{dN_2}{dt}=r_2N_2(1-a_{21}N_1),
+\end{equation}
+where $r_1,r_2,a_{12}$ and $a_{21}$ are constants greater than zero and the $r_i$ are the two birth/death rates and $a_{ij}$ is the competitive effect of population $j$ on $i$.
+
+Lastly, when a mutualism is experienced, both population have a positive effect on the others population growth. This will give an equation with only positive terms,
+\begin{equation}
+\frac{dN_1}{dt}=r_1N_1+a_1N_1N_2, \quad \frac{dN_2}{dt}=r_2N_2a_2N_2N_1,
+\end{equation}
+where $r_i$ and $a_i$ are positive constants.
+In a real World, at least one of the species has a benefit, therefore a realistic model can be
+\begin{equation}
+\frac{dN_1}{dt}=r_1N_1\left(1-\frac{N_1}{K_1}+b_{12}\frac{N_2}{K_1}\right), \quad \frac{dN_2}{dt}=r_2N_2\left(1-\frac{N_2}{K_2}+b_{21}\frac{N_1}{K_2}\right),
+\end{equation}
+where both species have limited carrying capacities $K_1$, $K_2$ and $r_1, r_2, b_{12}, b_{21}$ are positive constants.
+
+In next charpter, we will see the Lyapunov Function and the use of it.
+
+\chapter{Scalar equation and Lyapunov Functions}
+Aleksandr Mikhailovich Lyapunov was a Russian mathematician that lived in between the 19th and 20th century. He contributed to several fields including dynamical systems, giving the World many mathematical concepts such as: \textbf{Lyapunov function}, Lyapunov's theorem, \textbf{Lyapunov stability}
+and many others. This chapter uses informations from [10] and [11]. 
+\\
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{defn}
+\label{lgdef3}
+
+A Lyapunov function is a scalar equation $V(x,y)$, and is defined in a region $\mathfrak{D}$ that is continuous, positive definite, $V(x,y)>0$ for all $(x,y)>0$, and has a continuous first-order partial derivatives at every point of $\mathfrak{D}$. The derivative of $V$ with respect to the system $(x,y)'=f(x,y)$, written as $V^*(x,y)$ is defined as the dot product:
+\begin{equation}
+V^*(x,y)=\nabla V(x,y)\cdot f(x,y)
+\end{equation}
+We can define the derivatives of the trajectories by also differentiating with respect to time.
+\end{defn}
+\end{mdframed}
+Lyapunov functions are used in order to prove that a stationary point is Lyapunov stable. However, unlike the definition of Lyapunov stability, Lyapunov functions can be considered as an energy function. By working out the Lyapunov functions, we can determine the energy of trajectory as it approaches the origin. The Lyapunov function can be denoted as $V(x,y)$, which is the zero solution of the system. This can be represented in the example below.
+\newline
+\\
+\textbf{Example:} Considering the system 
+\begin{equation}\label{eq:5}
+\dot{x}=f(x,y),
+\end{equation}
+\begin{equation}\label{eq:6}
+\dot{y}=g(x,y),
+\end{equation}
+where the point $(0,0)$ is a stable steady state. Then we say there exists some domain $\mathfrak{D}$, restricted around the neighbourhood of the origin as $t\rightarrow\infty$. Using the fact that $V(x,y)$ is the energy function and is greater than 0 for $(x,y)\in \mathfrak{D}$ with $V =0$ at the origin. We say that each trajectory in $\mathfrak{D}$ approaches the origin with less energy as $t$ tends to infinity meaning that $V(x,y)$ does decrease.
+$V(x,y)$ can be defined in some domain $\mathfrak{D}$ containing the origin. Then:
+\begin{enumerate}
+\item $V(x,y)$ is positive definite if $V(0,0)$ and $V(0,0)$ and $V(x,y)>0$ for all points in $\mathfrak{D}$. 
+\item $V(x,y)$ is negative definite if $V(0,0)$ and $V(0,0)$ and $V(x,y)<0$ for all points in $\mathfrak{D}$.
+\item $V(x,y)$ is positive semi definite if $V(0,0)$ and $V(0,0)$ and $V(x,y)\geq{0}$ for all points in $\mathfrak{D}$.
+\item $V(x,y)$ is negative semi definite if $V(0,0)$ and $V(0,0)$ and $V(x,y)\leq{0}$ for all points in $\mathfrak{D}$.
+\end{enumerate} 
+Furthermore,
+\begin{align}
+\frac{dV}{dt}=&\frac{dx}{dt}\frac{\partial V}{\partial x}+\frac{dy}{dt}\frac{\partial V}{\partial y} \\
+=& \frac{\partial V}{\partial x} f(x,y)+ \frac{\partial V}{\partial y} g(x,y).
+\end{align}
+\newline 
+The definition above only takes into consideration the positive definite case of $V(x,y)$. If $V(x,y)$ is a Lyapunov function, then $V(x,y)$ decreases along the trajectories, which therefore means $V(x,y)$ is strictly positive. However, these functions can be complicated, but the first step when finding the stability of the stationary point is to show that some trajectories stay in the neighbourhood of $G$. 
+\newline
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{thm} \label{thm:1}
+Suppose that $G$ is a bounded domain in ${\mathbb{R}^{n}}$ with boundary $\partial G$, and that $V:\text{cl}(G) \longrightarrow \mathbb{R}$ is a Lyapunov function. If there exists $x_0 \in G$ such that $V(x)>V(x_0)$ for all $x\in \partial G$ then
+$$S(x_0) = \left\{x \in \text{cl}(G)|V(X) \leq V(X_0)\right\}$$ is bounded set in G and $\varphi(x_0,t) \in S(x_0)$ for all $t\geq 0$.
+\end{thm}
+\end{mdframed}
+In next section, we will understand how to construct a Lyapunov Function.
+\section{Constructing a Lyapunov Function}
+Lyapunov functions can be constructed in four different ways: \textbf{The variable gradient} method, \textbf{Krasovskii's} method, \textbf{Zubov's} method and the \textbf{Energy-Casinmir} method.
+\\
+In the variable gradient method, it is assumed that the gradient is an unknown Lyapunov function and, then, by integrating the assumed gradient one can often arrive at a Lyapunov function.
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\textbf{Proposition 1}: The function $g:\mathbb{R}^n\rightarrow\mathbb{R}^n$ is the gradient vector of a scalar-valued function $v:\mathbb{R}^n\rightarrow\mathbb{R}$ if and only if:
+\begin{equation}
+\frac{\partial g_i}{\partial x_j}=\frac{\partial g_j}{\partial x_i} ,\quad  i,j=1,\dots,n.
+\label{eq:lg6}
+\end{equation}
+Where $g_i(x)=\frac{\partial V}{\partial x_i}$.
+\end{mdframed}
+\textbf{Example}: Consider the nonlinear system
+\begin{equation}
+\dot{x}(t)=x_2(t), \quad \dot{x}_1(0)=x_{10}, \quad t\ge0,
+\label{eq:lg4}
+\end{equation}
+\begin{equation}
+\dot{x}_2=-[x_1(t)+x_2(t)]-\sin(x_1(t)+x_2(t)).
+\label{eq:lg5}
+\end{equation}
+To construct a Lyapunov function for (\ref{eq:lg4}) and (\ref{eq:lg5}), let $g(x)=[a_{1 1}x_1+a_{1 2}x_2, a_{2 1}x_1+a_{2 2}x_2]^T$ and let $a_{12}=a_{21}=\beta$ so that the symmetry requirement (\ref{eq:lg6}) holds. Now,
+\begin{equation}
+\dot{V}(x)=g^T (x)f(x)=(a_{11}x_1+\beta x_2)x_2-(\beta x_1+a_{22}x_2)[(x_1+x_2)+\sin(x_1+x_2)].
+\end{equation}
+Taking $a_{11}=2\beta$, $a_{22}=\beta$ and $\beta>0$ it follows that 
+\begin{equation}
+\dot{V}(x)=\beta x_1^2-\beta(x_1+x_2)sin(x_1+x_2)<0, \quad (x_1,x_2)\in \mathfrak{D}. 
+\end{equation}
+Where $\mathfrak{D}\triangleq \{(x_1,x_2):|x_1+x_2|<\pi \}$. Hence,
+\begin{equation}
+V(x)=\int_{0}^{1} [g_1(\sigma x_1,\sigma x_2)x_1+g_2(\sigma x_1,\sigma x_2)x_2]d\sigma \notag
+\end{equation}
+\begin{equation}
+=\int_{0}^{1} \beta[2x_1^2+2x_1x_2+x_2^2]\sigma d\sigma \notag
+\end{equation}
+\begin{equation}
+=\beta x_1^2+\beta x_1x_2+\frac{1}{2}\beta x_2^2. 
+\end{equation}
+Note that $V(0,0)=0$ and $V(x_1,x_2)=\frac{1}{2}\beta x_1^2+\frac{1}{2}\beta(x_1+x_2)^2, (x_1,x_2)\in \mathbb{R}\times\mathbb{R}\not= (0,0)$ and hence $V(x), x\in \mathfrak{D}$, is a Lyapunov function for (\ref{eq:lg4}) and (\ref{eq:lg5}).
+
+\textbf{Krasovskii's method} imply that the following proposition is needed.
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\textbf{Proposition 2}: Let $f,g:\mathbb{R}^n\rightarrow\mathbb{R}^n$ be continuously differentiable functions such that $f(0)=0$ then for every $x\in\mathbb{R}^n$ there exists $\alpha\in[0,1]$ such that,
+\\
+\begin{equation}
+g^T(x)f(x)=g^T(x)\frac{\partial f}{\partial x}(\alpha x)x.
+\end{equation}
+\end{mdframed}
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\textbf{Krasovskii's theorem}:
+\\
+Let $x(t)\equiv0$ be an equilibrium point for the  system 
+\begin{equation}
+\dot{x}(t)f(x(t)), \quad x(0)=x_0, \quad t\ge 0,
+\label{eq:lg3}
+\end{equation}
+where $f:\mathfrak{D}\rightarrow \mathbb{R}^n$ is continuously differentiable and $\mathfrak{D}$ is an open set with $0\in \mathfrak{D}$. Assume there exist positive matrices $P\in \mathbb{R}^{n\times n}$ and $R\in \mathbb{R}^{n\times n}$ such that
+\\
+\begin{equation}
+\left[\frac{\partial f}{\partial x}(x)\right]^T P+P\left[\frac{\partial f}{\partial x}(x)\right]-R, \quad x\in \mathfrak{D}, \quad x\not= 0,
+\end{equation}
+then the zero solution $x(t)\equiv 0$ to (\ref{eq:lg3}) is a unique asymptotically stable equilibrium with Lyapunov function $V(x)=f^T(x)Pf(x)$. In addition, if $\mathfrak{D}=\mathbb{R}^n$, then the zero solution $x(t)\equiv 0$ to (\ref{eq:lg3}) is a unique globally asymptotically stable equilibrium.
+\end{mdframed}
+
+\textbf{Example}: Consider the nonlinear system
+\begin{equation}
+\dot{x}_1(t)=-3x_1(t)+x_2(t), \quad x_1(0)=x_{10}, \quad t\ge0,
+\label{eq:lg1}
+\end{equation}
+\begin{equation}
+\dot{x}_2=x_1(t)-x_2(t)-x_2^3(t), \quad x_2(0)=x_{20}. 
+\label{eq:lg2}
+\end{equation}
+Note that $(0,0)$ is the equilibrium point of (\ref{eq:lg1}) and (\ref{eq:lg2}). Next, evaluating
+
+\begin{equation}
+\frac{\partial f}{\partial x}=\begin{bmatrix}
+\frac{\partial f_1(x)}{\partial x_1} & \frac{\partial f_1(x)}{\partial x_2}\\
+\frac{\partial f_2(x)}{\partial x_1} & \frac{\partial f_2(x)}{\partial x_2}
+\end{bmatrix}=\begin{bmatrix}
+-3 & 1\\
+1 & -1-3x_2^2
+\end{bmatrix},
+\end{equation}
+it can be easily be shown that (\ref{eq:lg3}) holds with $P=I_2$ and $R=I_2$ so that all the conditions of Kravoskii's theorem are satisfied. Hence, the zero solution $(x_1(t),x_2(t))\equiv (0,0)$ to (\ref{eq:lg1}) and (\ref{eq:lg2}) is globally asymptotically stable with Lyapunov function $V(x)=f^T(x)Pf(x)=f^T(x)f(x)=(-3x_1+3x_2)^2+(x_1-x_2-x_2^2)^2$.
+\\
+\\
+Unlike the previous two methods, \textbf{Zubov's method} characterizes  a domain of attraction for a given nonlinear system.
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\textbf{Zubov's theorem}:
+\\
+Consider the nonlinear system with $f(0)=0$. Let $\mathfrak{D}\subset\mathbb{R}^n$ be bounded and assume there exists a continuously differentiable function $V:\mathfrak{D}\rightarrow\mathbb{R}$ and a continuous function $h:\mathbb{R}^n\rightarrow\mathbb{R}$ such that $V(0)=0, h(0)=0$ and
+\begin{equation}
+0<V(x)<1, \quad x\in\mathfrak{D}, \quad x\not= 0 
+\label{eq:lg7}
+\end{equation}
+\begin{equation}
+V(x)\rightarrow 1 \quad as \quad x\rightarrow\partial \mathfrak{D}, 
+\label{eq:lg8}
+\end{equation}
+\begin{equation}
+h(x)>0, \quad x\in\mathbb{R}^n, \quad x\not= 0,
+\label{eq:lg9}
+\end{equation}
+\begin{equation}
+V'(x)f(x)=h(x)[1-V(x)].
+\label{eq:lg10}
+\end{equation}
+Then the zero solution $x(t)\equiv 0$ is asymptotically stable with domain of attraction $\mathfrak{D}$.
+\end{mdframed}
+
+\textbf{Example}: Consider the second-order nonlinear dynamical system 
+\begin{equation}
+\dot{x}_1=f_1(x_1)+f_2(x_2), \quad x_1(0)=x_{10},
+\label{eq:lg11}
+\end{equation}
+\begin{equation}
+\dot{x}_2=-f_3(x_1), \quad x_2(0)=x_{20},
+\label{eq:lg12}
+\end{equation}
+where $f_i(0)=0, \sigma f_i(0)>0, \sigma\in9-a_i,b_i)$ for $i=1,2,3, a_1=a_3, b_1=b_3$, and $\int_0^yf_i(s)ds\rightarrow\infty$ as $y\rightarrow-a_i$ or $y\rightarrow b_i$, for $i=2,3$. Next, let $h(x)=f_1(x_1)f_3(x_1)$ and let $V(x)$ be of the form $V(x)=1-Y_1(x_1)V_2(x_2)$, where $V_i:\mathbb{R}\rightarrow\mathbb{R}, V_(0)=1,  i=1,2$. Now, it follows from (\ref{eq:lg10}) that
+\begin{equation}
+[V_1'(x_1)+f_3(x_1)]V_2(x_2)f_1(x_1)+[V_2'(x_2)V_1(x_1)f_3(x_1)-V_1'(x_1)V_2(x_2)f_2(x_1)]=0,
+\label{eq:lg13}
+\end{equation}
+which can be satisfied by setting $V_1'(x_1)=-f_3(x_1)V_1(x_1)$ and $V_2'(x_2)=-f_2(x_2)V_2$. Hence (\ref{eq:lg10})holds with 
+\begin{equation}
+V(x)=1-e^{-[\int_0^{x_1} f_3(s)ds+\int_0^{x_2} f_2(s)ds]}.
+\label{eq:lg14}
+\end{equation}
+Note that (\ref{eq:lg14}) satisfies $V(0)=0$, (\ref{eq:lg7}), (\ref{eq:lg8}) for all $x\in \mathfrak{D}=\{x\in\mathbb{R}^2:-a_i<x_i<b_i\},i=1,2$. Moreover, it can be easily be shown that $V(x)=-f_1(x_1)f_3(x_1)[1-V(x)]\le 0$, which proves Lyapunov stability of (\ref{eq:lg11}) and (\ref{eq:lg12}). To show asymptotically stability, we considered that $\dot{V}(x)=0$ implies that $f_1(x_1)f_3(x_1)=0$, that further implies $x_1=0$. Furthermore $x_1(t)\equiv 0$ implies $f_2(x_2(t))\equiv 0$, which further implies $x_2(t)\equiv 0$. Hence, with $\mathfrak{D}_C=\bar{\mathfrak{D}}$, it follows that the zero solution $(x_1(t),x_2(t))\equiv (0,0)$ to (\ref{eq:lg11}) and (\ref{eq:lg12}) is asymptotically stable with domain of attraction $\bar{\mathfrak{D}}$.
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+For the \textbf{Energy-Casimir Thorem}, consider the nonlinear system where $f:\mathfrak{D}\rightarrow\mathbb{R}^n$ is Lipschitz continuous on $\mathfrak{D}$. Let $x_e\in\mathfrak{D}$ be an equilibrium point and let $C_i:\mathfrak{D}\rightarrow\mathbb{R}, i=1,\dots,r$ be a Casimir function. Assume that the vectors $C_i'(x_e), i=2,\dots,r$ are linearly independent and suppose that there exists $\mu=[\mu_1,\dots,\mu_r]^T\in\mathbb{R}^r$ such that $\mu_1\not= 0, E'(x_e)=0$, and $x^TE''(x_e)x>0, x\in \mathfrak{M}$ where $\mathfrak{M}\triangleq \{x\in \mathfrak{D}:c_i'(x_e)x=0, i=2,\dots,r\}$. Then there exists $\alpha\ge 0$ such that
+\begin{equation}
+E''(x_e)+\alpha\sum_{i=2}^{r}(\frac{\sigma C_i}{\sigma x}(x_e))^T(\frac{\sigma C_i}{\sigma x})>0.
+\end{equation}
+Furthermore, the equilibrium solution $x(t)\equiv x_e$ is Lyapunov stable with Lyapunov function
+\begin{equation}
+V(x)=E(x)-E(x_e)+\frac{\alpha}{2}\sum_{i=2}^{r}[C_i(x)-C_i(x_e)]^2.
+\end{equation}
+\end{mdframed}
+
+\textbf{Example}: Consider the nonlinear dynamical system representing a rigid spacecraft given by
+\begin{equation}
+\dot{x}_1(t)=I_{23}x_2(t)x_3(t), \quad x_1(0)=x_{10}, \quad t\ge 0
+\label{eq:lg15}
+\end{equation}
+\begin{equation}
+\dot{x}_2(t)=I_{31}x_3(t)x_1(t), \quad x_2(0)=x_{20},
+\label{eq:lg16}
+\end{equation}
+\begin{equation}
+\dot{x}_3(t)=I_{12}x_1(t)x_2(t), \quad x_3(0)=x_{30}.
+\label{eq:lg17}
+\end{equation}
+To show that the equilibrium solution $x(t)\equiv{x_e}$, where $x_e=[0,0,x_3e]^T$ to (\ref{eq:lg15})-(\ref{eq:lg17}) is Lyapunov stable note that
+\begin{equation}
+C_1(x)=\frac{1}{2}(I_1 x_1^2 +I_2 x_2^2 +I_3 x_3^3),
+\end{equation}
+\begin{equation}
+C_2(x)=\frac{1}{2}(I_1^2 x_1^2 +I^2_2 x_2^2 +I^2_3 x_3^3),
+\end{equation}
+are Cashmir functions for (\ref{eq:lg15})-(\ref{eq:lg17}). Now letting $E(x)=\mu_1 C_1(x) +\mu_2 C_2 (x)$ it follows that $E'(x_e)=0$ and $x^T E''(x_e) x >0, x\in M,x\neq(0)$ are satisfied with $\mu_1= -I_3 $ and $\mu_2=1$. Next, using
+\begin{equation}
+V(x_1,x_2,x_3)= E(x_1,x_2,x_3)-E(0,0,x_3e)+\frac{\alpha}{2}[C_2(x_1,x_2,x_3)-C_2(0,0,x_3e)]^2
+\label{eq:lg18}
+\end{equation}
+it follows that Q in $V''(x_e)=S^T\begin{bmatrix}
+E_1 & E_{12}\\
+E_{12}^T & E_2+\alpha N
+\end{bmatrix}
+S\triangleq S^TQS$ is given by
+\begin{equation}
+Q=\begin{bmatrix}
+I_1(I_1-I_3) & 0 & 0\\
+0 & I_2(I_2-I_3) & 0\\
+0 & 0 & \alpha I_3^4x_{3e}^2
+\end{bmatrix}.
+\end{equation}
+Note that $Q>0$ for every $\alpha>0$. Hence it follows from Energy-Casimir theorem that the equilibrium solution $x(t)\equiv x_e$ to (\ref{eq:lg15})-(\ref{eq:lg17}) is Lyapunov stable with Lyapunov function (\ref{eq:lg18}).
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{thm} \label{thm:1}
+Suppose that $G$ is a bounded domain in ${\mathbb{R}^{n}}$ with boundary $\partial G$, and that $V:\text{cl}(G) \longrightarrow \mathbb{R}$ is a Lyapunov function. If there exists $x_0 \in G$ such that $V(x)>V(x_0)$ for all $x\in \partial G$ then
+$$S(x_0) = \left\{x \in \text{cl}(G)|V(X) \leq V(X_0)\right\}$$ is bounded set in G and $\varphi(x_0,t) \in S(x_0)$ for all $t\geq 0$.
+\end{thm}
+\end{mdframed}
+
+We will see the idea of finding the Lyaounov First and Second stability by using a Lyapunov Function. In addition, we will understand the phase plane and Bifurcation diagram in the next chapter.
+\section{Lyapunov First Stability Theorem}
+One way in which Lyapunov believed that stability could be determined was by his First Stability Theorem. 
+\newline 
+ \begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{thm} \label{thm:2}
+ Suppose that a Lyapunov function can be defined on a neighbourhood of the origin $x=0$, which is a stationary point of differential equation $\dot{x}=f(x)$.
+\end{thm}
+\end{mdframed}
+\textbf{Example:} Considering the differential equation 
+\begin{align}
+\begin{split}
+\label{eq:7}
+\dot{x}=&-x +x^3-3xy ,
+\\ 
+\dot{y}=&-3y-4xy+3y^2,
+\end{split}
+\end{align}
+we know that the origin is a stationary point. However, we want to see whether or not it is Lyapunov stable. Firstly, we assume that the trial function is $V(x,y)=\frac{1}{2} (x^2+y^2)$ which gives
+\begin{equation}
+\dot{V}(x,y)=x\dot{x} + y\dot{y} = x(-x+x^3-3xy)+y(-3y-4xy+y^2),\label{eq:9} 
+\end{equation}
+or
+\begin{equation}
+\dot{V}(x,y)= -x^2(1-x^2+3y)-y^2(3+4x-y).\label{eq:10}
+\end{equation}
+This has proved $V(x,y)$ is a Lyapunov function provided $(1-x^2+3y)$ and $(3+4x-y)$ are positive on some neighbourhood of $(x,y)=(0,0)$. This is true, so we can set $G$ to be any open bounded subset containing $(0,0)$
+\begin{equation}
+\left\{(x,y)|x^2-3y<1, \quad 4x-y>3\right\}.\label{eq:11}
+\end{equation}
+We are now moving onto Lyapunov Second Stability Theorem.
+\section{Lyapunov Second Stability Theorem}
+  \begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{thm} \label{thm:3}
+Suppose $x=0$ is a stationary point $\partial x=f(x)$ and let $V(x,y)$ be a Lyapunov function on a neighbourhood $G$ of $x=0$. If $\dot{V}(x,y)<0$ for all $x\in G\left\{0\right\}$, then $x=0$ is asymptotically stable.
+\end{thm}
+\end{mdframed}
+In other words, using the system from (\ref{eq:5}) and (\ref{eq:6}) we can then say that there exists a function $V(x,y)$ such that
+
+\begin{enumerate}
+\item If $\frac{dV}{dt}=\frac{\partial V}{\partial x} f(x,y)+ \frac{\partial V}{\partial y} g(x,y)$ is a negative semi definite which means the steady state is stable.
+\item  If $\frac{dV}{dt}=\frac{\partial V}{\partial x} f(x,y)+ \frac{\partial V}{\partial y} g(x,y)$ is negative definite which means the steady state is asymptotically stable.
+\item  If $\frac{dV}{dt}=\frac{\partial V}{\partial x} f(x,y)+ \frac{\partial V}{\partial y} g(x,y)$ is positive definite which means the steady state is unstable.
+\end{enumerate} 
+\textbf{Example:} Given the system 
+\begin{align}
+\frac{dx}{dt}=& -y+\alpha x(x^2+y^2),\label{eq:12}\\
+\frac{dy}{dt}=& x+\alpha y(x^2+y^2),\label{eq:13}
+\end{align}
+suppose that $V(x,y)= x^2+y^2$, then
+\begin{equation}
+\frac{\partial v}{\partial t}= \frac{\partial v}{\partial x}f + \frac{\partial v}{\partial y}g. \label{eq:14}
+\end{equation}
+substituting in the values to (\ref{eq:14})\\
+\begin{align*}
+\frac{dV}{dt}=&2x[-y+\alpha x(x^2+y^2)] + 2y[x +\alpha y(x^2+y^2)]\\
+=&\alpha x(x^2+y^2) + \alpha y(x^2+y^2)\\
+=&\alpha x(x^2+y^2)^2
+\end{align*}
+
+We can conclude that $\dfrac{dV}{dt} <0$ and Lyapunov's theorem ensures that the origin is: i) \textbf{Asymptotically stable} when $\alpha<0$, which can be seen in Figure (\ref{figure2}), ii) \textbf{Stable} if $\alpha = 0$ . iii) \textbf{Unstable} if $\alpha >0$ which can be seen Figure (\ref{figure3}).
+\begin{figure}[H]
+ \includegraphics[scale=0.5]{limit}
+  \caption{Shows a phase portrait when when $alpha<0$ and the steady state is asymptotically stable.}
+  \label{figure2}
+\end{figure}
+
+We are now moving onto Scalar equation and Stability, we will understand how to visualize the Stability in this chapter.
+\chapter{Scalar equations and Stability}
+In this chapter we will be exploring the concept of scalar equations and what effect scalar equations have on nonlinear systems. We will also explore what a scalar equation is and how it relates to stability and also, steady states. In this chapter we will be using information from 
+Stability of Differential equations (book). The stability is very hard to define due to the vast amount of problems it can be applied to. One focus of this chapter will be to explore the key definitions of steady states and an in depth analysis of what these definitions mean. Another aspect of this chapter will be to explore the stability of steady states and how they can be worked out using various methods. In this chapter, we will use  [3],[4],[11] and [12] as the references. 
+\newline
+  \begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{defn} \label{def1}
+A steady state of a differential equation is the solution, which does not vary with $t$.
+
+Consider the first order differential equation
+\begin{equation}\label{eq:1}
+\dot{x}=f(x),\hspace{5mm} x\in {\mathbb{R}^{n}},
+\end{equation}
+then the steady state of this equation is
+ \begin{equation}\label{eq:2}
+ \dot{x}=0    \Longrightarrow\dot{x}=  x^*\in\mathbb{R} .
+\end{equation} \
+\end{defn}
+\end{mdframed}
+
+\textbf{Example:} Looking at the equation
+\begin{equation}
+\dot{x}=3x-1\text{,}
+ \end{equation}
+we then replace $x$ with $x^*$, which denotes the steady state
+ \begin{equation}\label{eq:3} 
+ -3x^*+1=0,
+ \end{equation}
+ this result in
+ \begin{equation}\label{eq:4}
+ x^*=\frac{1}{3}\text{.} 
+ \end{equation}
+
+
+
+\section{Phase Plane Analysis of 1st order DE}
+Phase planes are very useful to see the dynamics (behaviors) of a ODE system. This is extremely useful in Mathematical biology. There are many processes in chemical reactions that can be applied to a phase plane.
+Phase Planes can be used to determine whether the dynamics are stable and unstable dynamics of an ODE. If we have a good understanding of the Chemical Kinetics, we can formulate them as a ODE system and visualize them onto a phase plane. With the Phase Plane we can predict the rise and fall of a reactant and the concentration of a substance.
+
+Some of the information of [3],[7] and [12]will be used in this section, if there are any further reading is required.
+we will see how to visualize a 1st order ODE and determine its moving path. 
+\\
+Given $A$ is a diagnosable matrix, the determinant $det(A-\lambda I)=0$ leads to the characteristic polynomial, we get
+\begin{equation}
+ \lambda^2-\text{tr}(A)\lambda+\text{det}(A)=0.
+\end{equation}
+The solution of each eigenvalue is given by the quadratic equation;
+\begin{equation}
+\label{equ:1.22}
+\lambda=\dfrac{1}{2}(\text{tr}(A)\pm \sqrt{\Delta}).
+\end{equation}
+Rearranging (\ref{equ:1.22}), we get
+\begin{equation}
+\Delta=(\text{tr}(A))^2-4 \cdot \text{det}(A).
+\end{equation}
+\begin{figure}[H]
+\centering
+\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,top},capbesidewidth=4cm}}]{figure}[\FBwidth]
+{\caption{Behaviour of different types of equilibrium points of a linear autonomous system.[13]}\label{fig:tet1}}
+{\includegraphics[width=5cm]{11}}
+\end{figure}
+
+Figure(\ref{fig:tet1}) is known as \textbf{phase portrait}.  Usually phase portraits only include the trajectories of the solutions.
+
+To set up a phase plane, we need to sketch two straight lines which represented the two eigenvectors. We know that if the system either, converges toward these lines or diverges. The direction of the phase plane is plotted by using full lines. By determining whether the eigenvalues are positive or negative, we can see the dynamics of the system :
+\begin{itemize}
+  \item The intersection of the eigenvectors is said to be a \textbf{saddle point} if the eigenvalues are positive and negative.
+  \item the intersection is said to be an \textbf{unstable node}, if the eigenvalues are both positive, the eigenvectors represent stable situations which the system diverges away.
+  \item the intersection is said to be a \textbf{stable node} if the eigenvalues are both negative, the eigenvectors represent stable situations that the system converges.
+\end{itemize}
+Note this is a linear case.
+
+In next section, we will be using the basic understanding of this section to obtain a Bifurcation Diagram.
+\section{Bifurcation Diagram for 1st Order DE}
+
+In last section, we talked about phase planes, however, in this section we will see how stability can be combined with phase planes to create a diagram called the \textbf{bifurcation diagram}. Bifurcation diagram can predict the long term behaviour of the system, when its parameter is varied.
+Some of the information of [6],[7],[8] and [13]will be used in this section, if there are any further reading is required.
+
+This can be applied in Biology which gives a basic idea of understanding the behavior of a biological system, in terms of the behavior of the system.  The ability to make a dramatic change in system output is essential to organism functionality. In this section, we will be focusing on the 1st order linear and non-linear case.We will talk about the meaning of $x^*$ in chapter 3.
+
+\subsection{1st Order Linear case}
+Considering $k$ as the parameter of the ODE model $\dfrac{dx}{dt}=k{x}$ , then we can clearly see that this is linear.
+
+Let us consider $k<0$,
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth, inner]{6a}
+\caption{This outline the case when a)$k>0$ ,b)$k<0$, $k=0$ [3]}
+\label{fig:figure32}
+\end{figure} 
+a) When $k>0$, 
+\begin{itemize}
+\item{When $x_0>0$, $\dfrac{dx}{dt}>0$, as x increase when $x\rightarrow\infty$.}
+\item{When $x_0=0$, $\dfrac{dx}{dt}=0$, $x$ stay at $0$ if $x$ is perturbed, it diverge to $\pm\rightarrow\infty$}
+\item {When $x_0<0$, $\dfrac{dx}{dt}<0$, $x$ decrease when $x\rightarrow -\infty$.}
+\end{itemize}
+The graph indicates that $k>0$ is unstable.
+b) When $k<0$, 
+\begin{itemize}
+\item {$x_0>0$, $\dfrac{dx}{dt}<0$, as $x$ decrease when $x\rightarrow\infty$.}
+\item {$x_0=0$, $\dfrac{dx}{dt}=0$, $x$ stay at $0$.}
+\item{$x_0<0$, $\dfrac{dx}{dt}>0$, $x$ decrease when $x\rightarrow -\infty$.}
+\end{itemize}
+The graph indicates that $k<0$ is stable.
+\newline
+c) when $k=0$, When $k=0$, for every value we start, $\dfrac{dx}{dt}$ will always be $0$.
+
+If we combine these 3 pictures together, we get the following diagram
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth, inner]{6}
+\caption{This outline exactly the same as what the phase plane shows. When $k>0$, it is moving away from $0$ and when $k<0$, it moves towards $0$.[3]}
+\label{fig:figure32}
+\end{figure} 
+\subsection{1st Order Nonlinear case}
+We will briefly introduce nonlinear systems. However, we will examine them in grater depth in the next chapter. In the  nonlinear case, There are 3 types of bifurcation. These are \textbf{Saddle node}, \textbf{Transcritical} and \textbf{Pitchfork}. Here we will use the parameter of $r$ to avoid the confusion with the 1st order linear case.
+
+\textbf{a) Saddle-node Bifurcation}
+Consider the model,
+\begin{equation}
+\label{equ:3.6.1}
+\dot{x}=r+x^2.
+\end{equation}
+Similar to the 1st order linear case, we can consider different values of the parameter $r$ and express them onto a phase plane. 
+\begin{figure}[H]
+\includegraphics[width=1\textwidth, inner]{17a}
+\caption{These 3 diagrams show the behaviour for $r<0$, $r=0$ and $r>0$.[3]}
+\label{fig:figre3}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth, inner]{17b}
+\caption{That shows Saddle-node Bifurcation. When $r$ is increasing from negative to positive values, the two fixed points merge at $r = 0$ and
+disappear for $r > 0$. The saddle-node bifurcation is formed by combining a stable and an unstable fixed point.[3]}
+\label{fig:figure3}
+\end{figure}
+
+\textbf{b) Transcritical Bifurcation}
+Consider the model
+\begin{equation}
+\label{equ:3.6.2}
+\dot{x}=x(r-x).
+\end{equation}
+There are always two fixed points in this case, one at $x=0$ and the another at $x=r$.  
+\begin{figure}[H]
+\includegraphics[width=1\textwidth, inner]{18a}
+\caption{These 3 diagrams shows the behaviour for $r<0$, $r=0$ and $r>0$.[3]}
+\label{fig:figure34}
+\end{figure}
+The Pitchfork bifurcation diagram is shown below. This has fix point at
+fixed points at $x=\pm \sqrt{r}$.
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth, inner]{18b}
+\caption{\textbf{This is the Pitchfork bifurcation diagram}. At $r=0$, there is a reversal in the stability of the fixed points,everything that used to be stable becomes unstable and vice versa.[3]}
+\label{fig:figure33}
+\end{figure}
+
+
+\textbf{c) Pitchfork Bifurcation}
+Consider the model
+\begin{equation}
+\label{equ:3.63}
+\dot{x}=x(r \pm x^2).
+\end{equation}
+In this model we have 2 cases,
+\newline
+For $r$ negative, there is always a fixed point at $x=0$. While for $r>0$, there are two fixed points at $x=\pm \sqrt{r}$ as shown below
+\begin{figure}[H]
+\includegraphics[width=1\textwidth, inner]{19a}
+\caption{These 3 diagrams are showing the behaviour when $r<0$, $r=0$ and $r>0$.[3]}
+\label{fig:figure34}
+\end{figure}
+If we combine the 3 diagrams together, we get
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth, inner]{19b}
+\caption{This is Pitchfork Bifurcation, when the value of the parameter is changing, 2 new fixed stable points are created whilst the third fixed point becomes unstable. This type of pitchfork bifurcation is said to be supercritical.[3]}
+\label{fig:figure34}
+\end{figure}
+Considering the positive case,
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth, inner]{19c}
+\caption{\textbf{Pitchfork Bifurcation(subcritical):}when the parameter is changing. two new unstable fixed points are created while the first fixed point becomes unstable. This type of pitchfork bifurcation is said to be subcritical.[3]}
+\label{fig:figure34}
+\end{figure}
+
+To explore differential equations and theirs stability, we have to take into consideration that the type of stability we are looking for from the differential equation itself. \\
+We can apply this basic concept to equations that dictate the paths in which a particle moves in order to get a better understanding of stability. First we take a particle positioned at the origin. If the particle is not in the correct position, then this will result in the particle not getting any better overtime due to the fact that it does not get any better overtime as it stays the same distance from the origin. This tells us that the equation is unstable. This causes us to come to the conclusion that a stationary point is always stable due to the fact that solutions near to the point tend to it. Similarly, if we place the particle close to the origin and a small error causes no impact on the overall outcome, then the stationary point is stable because it stays near the origin throughout its whole motion. These two types of stability will be explored in further detail during this chapter. 
+\newline
+Note that That we have used information and visual representations from pages 25-46 in Stability, Instability and chaos by Paul Glendinning and lecture notes from MA591 to write this chapter.  All proofs of definitions used in this chapter can be 
+\section{Meaning of Stability}
+So far, we described two types of stability. The first one described Lyapunov stability which occurs when points that start nearby stay nearby. The other definition described is called quasi-asymptotic stability. This means that any points that stay nearby the stationary point tend to it. If a point is quasi-asymptotically stable and Lyapunov stable then we say it is asymptotically stable.  Examples of these different types of stability will be seen in further detail in this chapter when they are described in more detail however, using the differential equation from (\ref{eq:1}), we are able to define these stabilities. Note that $\varphi$ denotes the flow of an autonomous differential system such that $\varphi$ is the solution to the differential equation.
+\\
+\begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{defn}\label{def:3}
+A point $x$ is quasi-asymptotically stable('tends to eventually') if and only if there exists $\delta>0$ such that  $\left| x-y\right| <\delta$ then  stable (starts near stay near') if for all $\varepsilon>0$ there exists $\delta>0$ such that if $\left| x-y\right| <\delta$ then
+\begin{equation}
+|\varphi( x,t)-\varphi( y,t)| \rightarrow{0}, 
+\end{equation}
+as $t\rightarrow\infty$. A further point to be considered is that this definition only considers the limit when t tends to $\infty$.
+This definition is illustrated in (\ref{figure1}b)
+\end{defn}
+\end{mdframed}\
+
+
+\begin{mdframed}[backgroundcolor=airforceblue!25]  
+\begin{defn}\label{def:4}
+A point $x$ is asymptotically stable('tends to directly') if and only if it is both Lyapunov stable and quasi-asymptotically stable.
+This is illustrated in (\ref{figure1}c)
+\end{defn}
+\end{mdframed}\
+A further point to be considered is that if a stationary point is asymptotically stable, then a neighbourhood of the stationary point must exist. This means that all the points inside this neighbourhood must tend to the stationary point. The largest neighbourhood in which this is satisfied is known as the basin of attraction.
+\begin{figure}[H]
+ \includegraphics[scale=0.3]{boo3}
+  \caption{Shows visual representations of a) Lyapunov, b) quasi-asymptotic and c) asymptotic stability when it follows the path of a particle. }
+  \label{figure1}
+\end{figure}
+
+
+
+\subsection{Strong Linear Stability}
+
+Sometimes, constructing a Lyapunov functions can be a complicated task. This can be done by finding the stationary points of the differential equation and then by substituting these points into the Jacobian matrix, created  from the differential equation in order to find the eigenvalues. From the eigenvalues we obtained, we can see whether the system is asymptotically stable or not.
+\newline
+ \begin{mdframed}[backgroundcolor=airforceblue!25] 
+\begin{thm} \label{thm:4}
+Suppose $\dot{x}=f(x)$ has linearisation $\dot{x}=Ax$ at $x=0$. If $A$ has $n$ distinct eigenvalues, each of which has strictly negative real apart then, $x=0$ is asymptotically stable.
+\end{thm}
+\end{mdframed}
+Theorem 9 is true, even if the eigenvalues of A are not distinct. It is sufficient that a has eigenvalues with strictly negative real parts
+
+\textbf{Example:}
+\begin{align}
+\dot{x}=&x(y+1)\label{eq:15}\\
+\dot{y}=&6x-3y+x^2-3y^2\label{eq:16}
+\end{align}
+We look for the stationary points using $\dot{x}=0$ and $\dot{y}=0$. By looking at equation (\ref{eq:15}), we can see that $x=0$ or $y=-1$. By substituting $x=0$ into (\ref{eq:16}) with $\dot{y}=0$ gives $y=0$ or $y=-1$. Also, when $y=-1$ results in us getting $x=0$ and $x=-6$. From these values we deduce that there are three stationary points which are $(x,y)=(0,0), (0,-1),(-6,-1).$ The Jacobian matrix \\
+\begin{align}\label{eq:17}
+\left( \begin{array}{cc} y-1 & x  \\ 3+2x & -2-4y  \\  \end{array} \right).
+\end{align}
+Which we need in order to find the eigenvalues of the matrix at the three stationary points. At $(0,0)$ the matrix becomes 
+\begin{align}\label{eq:18}
+\left( \begin{array}{cc} -1 & 0  \\ 3 & -2  \\  \end{array} \right).
+\end{align}
+With the eigenvalues being $-1$ and $-2$ since both values are negative, then we expect the origin to be asymptotically stable. At the other two stationary points , one eigenvalue value is positive and the other is negative meaning that we cannot say that these points are asymptotically stable.
+
+
+We have seen a lot of Mathematics idea. Now It is time to apply those technique we have learn.
+\chapter{Reaction Kinetics}
+\section{Basic Enzyme Kinetics}
+
+Enzymes play a central role in all the biological processes such as metabolism,
+regulation and signalling. Many diseases are caused by deficiency of some enzyme
+and many drugs act by interacting with enzymes. The law of mass action is the basic idea of Enzyme Kinetics. Its aim is to analyse more complex reaction and this involves 2 or more elements in a reaction step. For this to be valid, we need to keep the temperature constant, the number of molecules must be large and the medium must also be well mixed. Some of the information of [1],[2],[5],[6] and [7] will be used in this section.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth, inner]{15}
+\caption{The graph shows that the complex $ES$ are broken into two element $P$ and $E$.}
+\label{fig:figure3}
+\end{figure}
+This is one of the Enzyme Kinetics example, we will discuss about it later on. 
+\section{Non-Reversible Kinetic Reaction }
+We have studied about theThere are many 1st order DE applications in Biology. The Transition State Theory(TST) is one of the best known examples of it.  
+\medskip
+\\TST is the reaction rate of elementary chemical reactions. The theory indicates a special type of chemical equilibrium (known as quasi-equilibrium) between elements and activated transition state complexes. TST is used to understand qualitatively how chemical reactions work.
+\begin{figure}[H]
+\centering
+\begin{includegraphics}[width=6cm]{1.jpg}\end{includegraphics}
+\caption{The equilibrium of a reaction is linked to the variation of biochemical standard free energy $\triangle G$. However, the velocity depends on the activation energy, $\triangle G_{s{\rightarrow}p}$.}
+\label{fig:figure2}
+\end{figure}
+Consider a model of reaction
+\begin{equation}
+{[S]{\overset{k}{\rightarrow}}[P]},
+\end{equation}
+where $S$ and $P$ is the ground state of substrate of 2 elements respectively.
+The notation "${\rightarrow}$"  means that the reaction would only go one way. A constant parameter associated the rates of the reaction is $k$ . The reaction rate $k$ is affected by the concentration of reaction. From the TST it is possible to derive the relation
+\begin{equation}
+{k}=\dfrac{KT}{h}{e}^{-\dfrac{\triangle G}{RT}},
+\end{equation}
+where $K$ is Boltzmann constant\footnote{Boltzmann constant is a physical constant relating energy at the individual particle level with temperature, which equals to $1.38064852 \times 10^{-23}{m^2}{kg}s^{-2}K^{-1}$}, $h$ is Plank constant\footnote{Planck constant is a physical constant that is the quantum of action, which equals to $6.62607004 \times 10^-34m^2kg/s$}, $R$ is the universal gas constant \footnote{Gas Constant is the constant in the equation for the Ideal Gas Law: $PV$ = $nRT$. where $P$ is pressure, $V$ is volume, $n$ is number of moles, and $T$ is temperature. The value of the gas constant '$R$' depends on the units used for pressure, volume and temperature.$ R = 0.0821 liter·atm/mol·K$} and $T$ is thermodynamic temperature.
+\medskip
+\\This rate of reaction is proportional to the concentrations of the reactant. We use the lower case letter to denote the concentrations of the reactants
+\begin{equation}
+\label{equ:2.3}
+s=[S], 
+\quad p=[P]
+\end{equation}
+where$[$   $]$denotes the concentrations.
+\medskip
+We now apply it into ODE system, we obtain
+\begin{equation}
+\label{equ:2.4}
+V=\dfrac{dp}{dt}=ks.
+\end{equation}
+This equation is referring to the velocity, $V$.
+\\If $S$ is turning $P$, then each molecule of $S$ which appears must correspond to a molecule of $P$, which disappeared. Thus, we have
+\begin{equation}
+\label{equ:2.5}
+\dfrac{ds}{dt}=-ks.
+\end{equation} 
+To obtain the future behaviour, the initial value of the variables need to be found. We integrate (\ref{equ:2.5}) by using the idea (\ref{equ:1.7}) and (\ref{equ:1.6}). We have
+
+\begin{equation}
+\label{equ:2.6}
+s(t)=s(0)e^{-kt}.
+\end{equation}
+Then we can also solve $p$ by substituting (\ref{equ:2.6}) into (\ref{equ:2.4}), We obtain
+\begin{equation}
+\label{equ:2.7}
+p(t)=P(0)+s(0)(1-e^{-kt}),
+\end{equation}
+from (\ref{equ:2.7}),(\ref{equ:2.6}), we know that $s$ decays exponentially to $0$ which means $p$ rises exponentially to its steady states.
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth, inner]{2}
+\caption{Dynamics of the concentrations in first order, ${s{\rightarrow}p}$.}
+\label{fig1.2}
+\end{figure}
+\medskip
+In next section, we will see the Reversible Kinetic Reaction.
+\section{Reversible Kinetic Reaction}
+\label{Reversible Kinetic Reaction}
+As we have mentioned in chapter 1, the component of linear ODE is determined by the number of dependent variables. If we assume that the equation is a reversible reaction, such that
+\begin{equation}
+[S]\mathrel{\mathop{\rightleftharpoons}^{\mathrm{k_1}}_{\mathrm{k_{-1}}}}[P].
+\end{equation}
+Similar to previous section, $k_1$ and $k_{-1}$ are constant parameters. The double arrow $\rightleftharpoons$ is a concise notation for the forward and backward reactions. We now express as the following
+\begin{align}
+\begin{split}
+[S]{\overset{k_1}{\rightarrow}}[P],
+\\
+[P]{\overset{k_{-1}}{\rightarrow}}[S].
+\end{split}
+\end{align}
+\medskip
+We should be able to obtain the same equation as (\ref{equ:1.1}), which is
+\begin{equation}
+\left(
+\begin{array}{c}
+\dfrac{ds}{dt}\\
+\dfrac{dp}{dt}\\
+\end{array} 
+\right)= 
+\left(
+\begin{array}{cc}
+-1 & 1\\
+1 & -1\\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+s \\
+p \\
+\end{array}
+\right).
+\end{equation}
+
+
+If we apply the method we used in (\ref{General Solutions for first Order ODEs of two Components}), we will obtain to same solution as (\ref{equ:3.201}) where
+
+\begin{equation}
+X(t)= \dfrac{1}{\sqrt{2}}\left( \left(
+\begin{array}{c}
+1 \\
+1 \\
+\end{array}
+\right)
++
+\left(
+\begin{array}{c}
+1 \\
+-1 \\
+\end{array}
+\right)e^{-2t}\right)
+.
+\end{equation}
+\medskip
+\section{Michaelis–Menten model}
+\textbf{Enzyme catalyzed reactions}
+
+Enzymes are the proteins that convert substrates into products and remaining unchanged. Additionally, the rate of production depends nonlinearly on the concentration as
+\begin{align}
+\label{equ:6.1}
+[S]+[E] \mathrel{\mathop{\rightleftharpoons}^{\mathrm{k_1}}_{\mathrm{k_{-1}}}} [C]\overset{k_2}{\longrightarrow}\ [P]+[E],
+\end{align}
+\begin{figure}[H]
+\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,top},capbesidewidth=4cm}}]{figure}[\FBwidth]
+{\caption{The graph is indicating the mass of law between  $[S]$, $[E]$, $[C]$, $[P]$.}\label{fig:t}}
+{\includegraphics[scale=1]{Untitled_result}}
+\end{figure}
+
+where $[S]$ is the substrate, $[E]$ is the enzyme, $[C]$ is the complex $[ES]$ and $[P]$ is the Product. 
+\begin{figure}[H]
+\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,top},capbesidewidth=4cm}}]{figure}[\FBwidth]
+{\caption{The graph is showing the transition state between [S]+[E] and[P]+[E].}
+\label{fig:t1}}
+{\includegraphics[width=5cm]{16}}
+\end{figure}
+
+As well as (\ref{equ:2.3}) we use the lower case letter $s$,$e$,$c$,$p$ respectively.
+We then express it in the ODE
+
+\begin{align}
+\label{eqn:6.3}
+\begin{split}
+&\dfrac{ds}{dt}=-k_1se+k_{-1}c, \hspace{5mm} \dfrac{de}{dt}=-k_1se+(k_{-1}+k_2)c,
+\\
+&\dfrac{dc}{dt}=k_1se-(k_{-1}+k_2)c, \hspace{5mm} \dfrac{dp}{dt}=k_2c,
+\end{split}
+\end{align}
+with initial conditions 
+\begin{equation}
+\label{eqn:6.4}
+s(0)=s_0,\hspace{5mm} e(0)=e_0, \hspace{5mm} c(0)=0, \hspace{5mm} p(0)=0.
+\end{equation}
+We can simplify by eliminating the ODEs, then $\dfrac{dp}{dt}$ is uncoupled from the others. However, we can obtain $p(t)$ by integration when we have $c(t)$.
+By the conservation of mass, $\dfrac{de}{dt}$ and $\dfrac{dc}{dt}$ can eliminate by each other.
+\begin{equation}
+\label{eqn:6.6}
+\dfrac{de}{dt}+\dfrac{dc}{dt}=0\Rightarrow e(t)+c(t)=e_0=constant.
+\end{equation}
+Using the initial conditions (\ref{eqn:6.4}), we reduced to only two ODEs $\dfrac{ds}{dt}$ and $\dfrac{dc}{dt}$,namely
+\begin{align}
+\label{equ:6.7}
+\begin{split}
+&\dfrac{ds}{dt}=-k_1e_0s+(k_1s+k_{-1})c,
+\\
+&\dfrac{dc}{dt}=k_1e_0s-(k_1s+k_{-1}+k_2)c,
+\end{split}
+\end{align}
+where its initial conditions are
+\begin{equation}
+\label{equ:6.8}
+s(0)=s_0, \hspace{5mm} c(0)=0.
+\end{equation}
+We then now use the initial conditions to solve the equations $\dfrac{dc}{dt}$ and $\dfrac{dp}{dt}$. An equilibrium state is essential for a fast complex [C] formation, implying that
+\newline
+\begin{align}
+\label{equ:6.9}
+\dfrac{dc}{dt}=0\Rightarrow c(t)=\dfrac{e_0s}{s+K_m}, \quad K_m=\dfrac{k_{-1}+k_{-2}}{k_1},
+\end{align}
+substituting into$\dfrac{ds}{dt}$ gives
+\begin{align}
+\label{equ:6.10}
+\dfrac{ds}{dt}=\dfrac{V_ms}{s+K_m}, \quad where \quad V_m=-k_2e_0.
+\end{align}
+We called $K_m$ is the Michaelis constant.
+The enzyme is considered to be present in small amounts compared with substrate. The assumption is that the substrate concentration does not change during  this initial transient stage. The approximation is governed by (\ref{equ:6.10}), with the initial condition $s_0$. This is known as quasi-steady state approximation which we will be discuss later on. We are now solving (\ref{equ:6.10}), we obtain
+\begin{equation}
+\label{equ:6.11}
+s(t)+k_m \ln s(t)=s_0+k_m \ln(s_0).
+\end{equation}
+We have an expression for the complex $c(t)$, it is does not satisfy the initial condition on $c(t)$ by substituting (\ref{equ:6.11}) this into (\ref{equ:6.9}). However, it involves time-scales in that system, one is the initial transient time-scale near $t=0$ and the other is the longer time-scale $t_c$. There are three problems that come up into our mind now
+\begin{itemize}
+  \item How fast is the initial transient?
+  \item For what range of the parameters to make the approximation of (\ref{equ:6.9})and (\ref{equ:6.11}) sufficiently.
+  \item if the enzyme concentration is bigger then substrate concentration?
+\end{itemize}
+To solve these problems,we are having a new method called the Nondimensionalistion.  Since the problems depend on how short transient period is, we know that the dimensionless quantity is time. The normal way to do the quasi-state analysis is to use the change of variables (dimensionless quantities). A change of variables is often used in biochemical models, in order to obtain adimensional normalized parameters. This helps in analysing the behaviour of the system for different values of the
+parameters. Furthermore, the adimensionalization  reduces the number of parameters. For the Michaelis–Menten(M–M) reaction we can use the following change of variables
+\smallskip
+\begin{align}
+\label{equ:6.12}
+\begin{split}
+&\tau=k_1e_0t, \hspace{3mm} u(\tau)\dfrac{s(t)}{s_0},\hspace{3mm}  v(\tau)=\dfrac{c(t)}{e_0},
+\\
+&\lambda=\dfrac{k_2}{k_1s_0}, \hspace{3mm} K=\dfrac{k_{-_1}+k_2}{k_1s_0}=\dfrac{K_m}{s_0}, \hspace{3mm} \varepsilon=\dfrac{e_0}{s_0}.
+\end{split}
+\end{align}
+It is a reasonable nondimensionalisation if $\dfrac{e_0}{s_0}\ll1$.
+We are are substituting the dimensionalless quantities into (\ref{equ:6.7}), the simplified model reduces to
+\begin{equation}
+\label{equ:6.13}
+\dfrac{du}{d\tau}=-u+(u+K-\lambda)v, \hspace{3mm} \varepsilon\dfrac{dv}{d\tau}=u-(u+K)v,
+\end{equation}
+where the initial conditions are $u(0)=1$ and $v(0)=0$. 
+Note that $K-\lambda>0$ from (\ref{equ:6.13}).
+
+The reaction (\ref{equ:6.7}) converts $S$ into the product $P$. We therefore have the steady state where $u=0$ and $v=0$, which means that the substrate and the substrate-enzyme complex concentrations are zero. We need the solution of (\ref{equ:6.13}) to find out the time evolution of the reaction. Since $\tau=0$, we can say $\dfrac{du}{d\tau}<0$ which means that $u$ decreases from $u=1$. Furthermore if $\dfrac{dv}{d\tau}>0$, then we say that $v$ increase from $v=0$ and continuous to do until
+\begin{align}
+v=\dfrac{u}{u+K}, \quad where \quad \dfrac{dv}{d\tau}=0
+\end{align} 
+From the initial condition of (\ref{equ:6.13}), $u$ is decreasing. When $v$ has reached its maximum. It starts to decrease toward zero and so does u for all values of t. The concentration of the dimensional enzyme $e(t)$ decreases from $e_0$ and then increase again to $e_0$ as $t\rightarrow\infty$.
+\section{Transient Time Estimates and Nondimensionalisation (Re-normalisation)}
+In the last section, we discussed how the Michaelis-Menten model i dimensionless form is $\dfrac{e_0}{s_0}\ll1$, but it is not always $\dfrac{e_0}{s_0}\ll1$. We will now extend this analysis, with a new nondimensionalisation which regards the situation of $\dfrac{e_0}{s_0}\ll1$ case and $\dfrac{e_0}{s_0}=O(1)$.
+As in the last section, we are interested in the two time-scales, the fast transient $t_c$ and the slow time $t_s$,  The complex $c(t)$ increases  while $s(t)$ does not change.  If the time-scale is obtained from the second equation of (\ref{equ:6.7}) with the initial condition $s_0$, we have
+\begin{equation}
+\label{equ:123}
+\dfrac{dc}{dt}=k_1e_0s_0-k_1(s_0+K_m)c.
+\end{equation}
+If we solve (\ref{equ:123}), we obtain an exponential solution
+\begin{equation}
+\label{equ:2.16}
+t_c=\dfrac{1}{k_1(s_0+K_m)}.
+\end{equation}
+As we have mentioned, $t_c$ is the fast transient. We are now going to estimate the slow time-scale , $t_s$. While $s(t)$ changes significantly, we take the maximum change  in the substrate , $s_0$, to be divided by the size of the maximum rate of change of $s(t)$ given by setting $s=s_0$ giving the approximation,
+\begin{equation}
+t_s\approx\dfrac{s_0}{\vert \dfrac{ds}{dt}\vert_{max}}\approx\dfrac{s_0+K_m}{k_2s_0}.
+\end{equation}
+For this to be valid,  the fast initial transient time needs to be (much) smaller than the slow time-scale when $s(t$) changes.
+ shows that  $t_c\ll t_s$, we can give analytical conditions for the validity of the simplified model in terms of $t_c$ and $t_s$, 
+\begin{equation}
+\label{equ:6.17}
+\dfrac{k_{2}e_{0}}{k_{1}(s_{0}+K_{m})^2}\ll1.
+\end{equation}
+The amount of $s$ consumed during the initial transient can be considered negligible. This means that the substrate $\Delta s(t)$, during the fast transient, is only a small fraction of $s_0$. The overestimate of $\Delta s(t$) is given by the maximum rate which is possible from the start of (\ref{equ:6.8}), that is $k_1e_0s_0$ multiplied by $t_c$. If we divide this by $s_0$, it gives
+\begin{equation}
+\label{equ:6.18}
+\varepsilon=\dfrac{e_0}{s_0+K_m}\ll1.
+\end{equation}
+Condition (\ref{equ:6.17}), with $K_m$ from (\ref{equ:6.9}), can be written as
+ \begin{equation}
+ \dfrac{e_0}{(s_0+K_m)(1+(k{-_1}/k_2)+(s_0k_1/k_2)}\ll1.
+ \end{equation}
+The latter assumption is satisfied for large values of $K_m$ which is when the reaction is slow. A condition of (\ref{equ:6.18}) can  be satisfied even if $K_m$ is large .
+In the experimental practice, but not all the kinetic parameters of the reaction are measured, but rather
+\begin{itemize}
+\item{the M–M constant, $K_m$},
+\item{the maximum reaction rate.
+\begin{equation}
+Q=[R_0]_{max}=k_2e_0, \hspace{6mm} 
+R_0=\dfrac{k_2e_0s_0}{s_0+K_m}=\dfrac{Qs_0}{s_0+K_m}.
+\end{equation}}
+\end{itemize}
+We will explore these equations in much greater detail later on in this chapter.
+The nondimensionalisation depends on the two time-scales $t_c$ and $t_s$. From the previous section, the solution we used depended on the fast transient $t_c$. However, we conceded the slow time-scale $t_s$ when $s(t)$ changed significantly. We will discuss more about this in the following chapter.
+We use $t_c$ from (\ref{equ:2.16}) as new variable. We obtain
+\begin{align}
+\label{equ:6.2}
+\begin{split}
+\tau=\dfrac{t}{t_c}=k_1(s_0+K_m)t, \hspace{3mm} u(\tau)=\dfrac{s(t)}{s_0},\hspace{3mm}  v(\tau)=\dfrac{(s_0+K_m)c(t)}{e_0s_0},
+\\
+\lambda=\dfrac{k_2}{k_1s_0}, \hspace{3mm} K_m=\dfrac{k_{-1}+k_2}{k_1}, \hspace{3mm} \varepsilon=\dfrac{e_0}{s_0+K_m}, \hspace{3mm} \rho=\dfrac{k_{-1}}{k_2}, \hspace{3mm} \sigma=\dfrac{s_0}{K_m}.
+\end{split}
+\end{align}
+If we substitute these variables into (\ref{equ:6.8})
+and (\ref{equ:6.7}), we get
+\begin{align}
+\label{equ:6.21}
+\begin{split}
+&\dfrac{du}{d\tau}=\varepsilon\left[-u+\dfrac{\sigma}{1+\sigma}uv+\dfrac{\rho}{(1+\sigma)(1+\rho)}v\right],
+\\
+&\dfrac{dv}{d\tau}=u-\dfrac{\sigma}{1+\sigma}uv-\dfrac{v}{1+\sigma},
+\\
+& u(0)=1,  \vspace{5mm}  v(0)=0.
+\end{split}
+\end{align}
+We are now nondimensionlising the time with the fast or slow time-scale with $t_s$ by setting
+\begin{equation}
+\label{equ:6.22}
+T=\dfrac{(1+\rho)t}{t_s}=\dfrac{(1+\rho)k_2e_0}{s_0+K_m}t=\varepsilon(1+\rho)k_2t.
+\end{equation}
+
+With the dimensionless variables form (\ref{equ:6.2}) and dimensionless variables (\ref{equ:6.22}), the model equations (\ref{equ:6.7}) become the following,
+\begin{align}
+\label{equ:6.23}
+\begin{split}
+&\dfrac{du}{dT}=-(1+\sigma)U+\sigma UV+\dfrac{\rho}{1+\rho}V,
+\\
+&\varepsilon\dfrac{dv}{dT}=(1+\sigma)u-\sigma uv-v.
+\end{split}
+\end{align}
+
+
+We need to remember that equation (\ref{equ:6.7}) is the being investigated. However but the three equation systems (\ref{equ:6.13}), (\ref{equ:6.21}) and (\ref{equ:6.23}) are a bit different, since they are nondimensionalised. The parameter $\varepsilon$ in these three equation is small and comes up in different places. The analytical procedure we use is determined by $\varepsilon$. We also have to know what to do in case $\varepsilon$ in (\ref{equ:6.2}) is not small. This happens when we have various enzyme reactions but also appears in a quite different situation involving T-cell proliferation in response in an antigen\footnote{This was studied by De Boer and Perelson in 1994.}.
+
+In our case, the substrate is a replacement of the cell, the enzyme the site on the antigen-presenting cell and the complex is the bound T-cell and antigen-presenting cell. The kinetics is
+shown as following
+\begin{equation}
+[S]+[E] \mathrel{\mathop{\rightleftharpoons}^{\mathrm{k_1}}_{\mathrm{k_{-1}}}} [C]\overset{k_2}{\longrightarrow}\ [2S]+[E].
+\end{equation}
+We should be able to see that $P$ in (\ref{equ:6.1}) is replaced by $2S$.
+This reaction system in which the enzyme is in excess and extend the above analysis to obtain a uniformly valid asymptotic solution\footnote{This was investigated by Borghans et al. in 1996}. Then we should be able to solve that by using the previous idea. Although the analysis is a little different but the concepts are almost the same. 
+
+\section{Michaelis-Menten Quasi-Steady State Analysis}
+
+
+In this section we will be using graphs and information from the text book Mathematical Biology by J.D Murray volume 1 [bibliograph]. To give a basic insight into this sub-chapter , we will try singular perturbation analysis on a dimensionless equation we used in before. We are going to use equation (\ref{equ:6.13}) and a process called pedagogical analysis to explain the background reasoning for singular perturbation analysis. This results in us getting an asymptotic solution to (\ref{equ:6.13}) between $0<\varepsilon\ll1$. In this section we will analyse a complex system which arises in practical enzyme reactions. We are going to be using the fact that $\dfrac{{e_{0}}}{{s_{0}}}$ is not as small as stated in the previous section and the Michaelis constant $K_{m}$ is drastically larger. Also, $\varepsilon$ used in (\ref{equ:6.13}) is small. Although, using a large Michaelis constant is rare, we will also see it applied later on in this chapter when we discuss Suicide Substrate Kinetics.\\
+
+Considering the system in (\ref{equ:6.13}), we can use the Taylor expansion solution to $u$ and $v$ :
+\begin{align}\label{eq:6.24}
+\ u(\tau;\varepsilon)= \sum_{n=O}\varepsilon{^n}u_n(\tau),\hspace{4mm} v(\tau;\varepsilon)= \sum_{n=O}\varepsilon{^n}v_n(\tau).
+\end{align}
+Substituting this into (\ref{equ:6.13}) and equating the powers of $\varepsilon$  gives us a the differential equations for the $u_n(\tau)$ and $v_n(\tau)$. This means that $u(\tau;\epsilon)$ and $u(\tau;\varepsilon)$ are analytic functions of $\varepsilon$ as $\varepsilon\rightarrow 0$.
+
+The $O(1)$ equations are
+\begin{align}\label{eq:6.25}
+\dfrac{du_0}{d\tau}= - u_0+(u_0 + K -\lambda)v_0,\hspace{5mm} 
+0=u_0 - (u_0+K)v_0,
+\end{align}
+when $u(0)=1$ and $v(0)$.
+However, by examining both of these equations, we can see that the second one is algebraic and therefore cannot satisfy the initial condition. However, solving (\ref{eq:6.25}) results in 
+\begin{align}
+v_0=\frac{u_0}{u_0+K}\hspace{3mm}\Rightarrow\hspace{3mm}\frac{du_0}{d\tau}=-u_0 + (u_0 +K-\lambda) \frac{u_0}{u_0+K}=-\lambda \frac{u_0}{u_0+K}.
+\end{align}
+This leads to
+\begin{align}
+u_0(\tau)+K\ln u_0(\tau)=A-\lambda\tau.
+\end{align}
+We can then solve this using the result that when $u_0(0)=1$, then $A=1$. This causes us to get 
+\begin{align}\label{eq:6.26}
+u_0(\tau)+K \ln u_0(\tau)=1-\lambda\tau,\hspace{5mm} v_0=\frac{u_0\tau}{u_0\tau +K}.
+\end{align}
+However, this is not a valid solution for all $\tau\geq0$ due to the fact $v_0(0)\neq0$ and the only derivative was found by setting $\varepsilon=0$.
+In this case we can see that a small parameter , $0<\varepsilon\ll1$, is used in the derivative in (\ref{equ:6.13}), which indicates that it is immediately recognised because when we set $\varepsilon=0$, the order of the system of differential equations is immediately  reduced and a reduced system is unable to satisfy all the initial conditions. Singular perturbation methods are very important in determining asymptotic solutions of systems that involve $\varepsilon$ being small. We will further be exploring this technique behind the singular perturbation method in detail and the asymptotic solution to (\ref{equ:6.13}) for when $0<\varepsilon\ll1$.
+An important fact to be considered is that in order for us to have derived the solution (\ref{eq:6.25}) from the equation given to us in (\ref{equ:6.13}), we would have had to assume that $v(\tau;\varepsilon)$ is analytical. This is due to the fact that the initial condition could not be satisfied and by assuming that $\varepsilon\dfrac{dv}{dt}$ is $O(e)$ can only be satisfied when we have neglected $v(\tau;\varepsilon)$. This causes us to retain this term in our analysis near $\tau=0$. This means we can focus more on the time scale of $near  \tau=0$ rather than just $\tau=0$. This can be denoted by $\sigma= \dfrac{\tau}{\varepsilon}$ rather than $\tau=0$ which results in $\varepsilon \dfrac{dv}{dt} = \dfrac{dv}{d\sigma}$. 
+
+The reason why we changed our timescale is because it magnifies the neighbourhood of $\tau=0$ and allows us to have a more in-depth look at the region for a fixed $0<\tau\ll1$, were we have $\sigma\gg1$ as $\varepsilon\rightarrow{0}$. This is a very small neighbourhood near $\tau=0$, which relates to a very large domain $\sigma$. We now apply this to (\ref{equ:6.13}) near $\tau=0$. This will result in us getting a solution away from $\tau=0$ and this can be shown in how to get a valid solution for all $\tau\geq0$ using the time scale $\sigma \dfrac{\tau}{\varepsilon} =0$, where the transformations become 
+\begin{align}\label{equ:6.27}
+\ u(\tau;\varepsilon)=U(\sigma;\varepsilon),\hspace{5mm}v(\tau;\varepsilon)= V(\sigma;\varepsilon).
+\end{align}
+This results in the equation in (\ref{equ:6.13}) becoming
+\begin{align}\label{equ:6.28}
+\dfrac{dU}{d\sigma}=-\varepsilon U +\varepsilon(U+K-\lambda)V,\hspace{4mm} \dfrac{dV}{d\sigma}=U-(U+K)V,
+\end{align}
+Where $U(0)=1$ and $V(0)=0$.\\
+Furthermore, if we again set $\varepsilon=0$ and $O(1)$ in the system, we get the solution 
+\begin{align}\label{equ:6.29}
+\ u(\sigma;\varepsilon)= \sum_{n=O}\varepsilon{^n}U_n(\sigma),\hspace{5mm} v(\sigma;\varepsilon)= \sum_{n=O}\varepsilon{^n}V_n(\sigma).
+\end{align}
+This results in
+\begin{align}\label{equ:6.30}
+\dfrac{dU_0}{d\sigma}=0,\hspace{5mm} \dfrac{dV_0}{d\sigma}=U_0-(U_0+K)V_0.
+\end{align} 
+with the conditions $U(0)=1, V(0)=0$. However, this is not of lower than the initial system which is (\ref{equ:6.28}). The solution for (\ref{equ:6.30}) is
+\begin{align}\label{equ:6.31}
+U_0(\sigma)=1, \hspace{5mm}V_0(\sigma)=\dfrac{1}{1+K}(1-\exp[-(1+K)\sigma])
+\end{align}
+
+We don't expect solution (\ref{equ:6.31}), to hold for all $\tau\geq0$ due to the fact that this results in $\dfrac{dv}{d\sigma}=\varepsilon\dfrac{dv}{d\tau}$ is $O(1)$, for all $\tau$. The solution we found (\ref{eq:6.26}) is known as the singular/inner solution for $u$ and $v$ and is valid for $0\leq\tau\ll1$ while (\ref{eq:6.26}) is the non-singular/outer solution valid for all $\tau$ that is not in the immediate neighbourhood of $\tau=0$. Furthermore, if we let $\varepsilon\rightarrow0$ then we have a fixed $0<\tau\ll1$ whilst $\varepsilon\rightarrow\infty$. This means that in the limit $\varepsilon\rightarrow0$, we can expect the solution of (\ref{eq:6.26}) as $\tau\rightarrow0$ to be equal to the solution (\ref{equ:6.31}) as $\sigma\rightarrow\infty$. In other words, the singular solution as $\tau\rightarrow0$, will be equal to the non-singular solution. This is known as the matching in singular perturbation theory. This can be shown in relation to (\ref{equ:6.31}) and (\ref{eq:6.26}) below:
+\begin{align}
+\lim_{\sigma \to \infty}U_0(\sigma)V_0(\sigma)=\left[1,\dfrac{1}{1+K}\right]=\lim_{\tau \to \infty}U_0(\tau)V_0(\tau)
+\end{align}
+We can also see this visually in Fig(\ref{figure1a}).
+\begin{figure}
+ \includegraphics[scale=0.5]{boo1}
+   \caption{Displays the behaviour of the solution of $u(\tau)$ and $v(\tau)$ with dimensionless enzyme concentration $\frac{e}{e_0}$ also included in the graph. }
+  \label{figure1a}
+\end{figure}
+A further point to be considered is that sometimes a thin layer $O(\varepsilon)$ near $\tau=0$ is formed. This is known as the boundary layer and is found in the $\tau$- domain where there are very sharp changes in the solution. Using (\ref{equ:6.31}) we get the equation:
+\begin{align}
+\dfrac{dV}{d\tau}]_{\tau=0}\sim\varepsilon^{-1}\dfrac{dV_0}{d\sigma}]\sigma=\varepsilon^{-1}\gg1.
+\end{align}
+To further enhance our knowledge on singular perturbation, we must look for the outer solution of (\ref{equ:6.13}) using the Taylor expansions we used in (\ref{eq:6.24}). this results in the equations becoming
+\begin{align}\label{equ:6.32}
+&O(1): \dfrac{du_0}{d\tau}=-u_0+(u_0+K-\lambda)v_0,\hspace{5mm} 0=u_0-(u_0+K)v_0,\\
+&O(\varepsilon): \dfrac{du_1}{d\tau}=u_1(v_0-1)+(u_0+K-\lambda)v_1,\hspace{2mm}\dfrac{dv_0}{d\tau}=u_1(1-v_0)-(u_0+K)v_1.
+\end{align}
+These are all valid for $\tau>0$ and the solutions include undetermined constants of integration, which means we have to use matching in singular perturbation. We do this by matching all the solutions as $\tau\rightarrow0$ with the singular solutions as $\sigma\rightarrow0$. 
+
+We can find the sequence of equations for the singular part of the solution by substituting (\ref{equ:6.29}) into (\ref{equ:6.28}) when valid for $0\leq\tau\ll1$ and equating powers $\varepsilon$. This gives us 
+\begin{align}\label{equ:6.33}
+&O(1): \dfrac{dU_0}{d\sigma}=0\hspace{5mm} \dfrac{dV_0}{d\sigma}=U_0-(U_0+K)V_0,\\
+&O(\varepsilon): \dfrac{dU_1}{d\sigma}=U_0+(V_0+K-\lambda)V_0,\hspace{5mm}\dfrac{dV_1}{d\sigma}=(1-V_0)U_1-(V_0+K)V_1.
+\end{align}
+All these equations must satisfy the initial conditions $\sigma=0$, which is $\tau=0$. This results in 
+\begin{align}\label{equ:6.34}
+\ &1=U(0;\varepsilon)= \sum_{n=0}\varepsilon\
+{^n}U_n(0)\Longrightarrow U_0(0)=1,\hspace{5mm}U_{n\geq1}(0)=0\\
+\ &0=V(0;\varepsilon)= \sum_{n=0}\varepsilon{^n}V_n(0)\Longrightarrow V_{n\geq0}(0)=0.
+\end{align}
+Unusually, the singular solutions have been determined completely which rarely ever happens. A more generalised way of showing matching of singular perturbation can be seen by the following equation:
+\begin{align}\label{equ:6.35}
+\lim_{\sigma \to \infty}[U(\sigma;\varepsilon)V(\sigma;\varepsilon)]=\lim_{\tau \to \infty}[u(\tau;\varepsilon)v(\tau;\varepsilon)]
+\end{align}
+This is for all orders of $\varepsilon$ and it shows the matching of the inner and outer solution. Using the equation from
+\begin{align}
+u_0(\tau)+K\ln u_0(\tau)=A-\lambda\tau,\hspace{5mm} v_0(\tau)=\dfrac{u_0(\tau)}{u_0(\tau)+K}.
+\end{align}
+Here we must use matching of singular perturbation in order to find out what $A$ is. $A$ represents the constant of integration. This process occurs by  applying the limiting process which is what we denoted by (\ref{equ:6.35}) to (\ref{equ:6.31}). This results in equations
+\begin{align}
+&\lim_{\sigma \to \infty}V_0(\sigma)=\dfrac{1}{1+K}=\lim_{\tau \to 0}v_0(\tau)\\
+&\Rightarrow v_0(0)=\dfrac{1}{1+K}=\dfrac{u_0(0)}{u_0(0)+K}\\
+&\Rightarrow u_0(0)=1\Rightarrow A=1.
+\end{align}
+This is an example of an asymptotic solution $0<\varepsilon\ll1$ to $O(1)$.
+Due to the fact that most of the biological application occurs when $0<\varepsilon\ll1$, we only need to evaluate the terms when $O(1)$ rather than $O(\varepsilon)$. This is because $O(\varepsilon)$ terms' contributions are negligible.
+Furthermore, a rapid change in the equation $v(\tau;\varepsilon)$, takes places in a dimensionless time, $\tau=O(\varepsilon)$, which is minute. Also, the dimensional time, $t$, is very small and in most experiments it is unable to be measured. This means that in many experiments, $u(\tau)$ and $v(\tau)$ are never observed. This happens in (\ref{eq:6.26}). We got this from the kinetic system in (\ref{equ:6.13}) by setting ${\varepsilon=0}$ and satisfying only the initial condition on $u(\tau)$, the substrate concentration. In simpler terms, this means the reaction for $v(\tau)$ is in a steady state or in mathematical terms, $\varepsilon \dfrac{dv}{dt}\approx 0$, which basically means the $v$-reaction is so fast that it is more or less at the equilibrium point at all time. This is known as Michaelis-Menten Quasi-Steady State hypothesis.\\
+This can further be applied to Reaction Kinetics and the rate of rate of reactions that occur. Michaelis-Menten Quasi-Steady State hypothesis can be determined  by measuring the dimensional substrate concentration denoted by $s(t)$ at different times and then seeing the magnitude of the initial rate $\dfrac{ds}{dt}$. The dimensional terms of the rate of reaction can be deduced by (\ref{equ:6.12}), with the $O(1)$ rate of reaction of $R_0$ is 
+\begin{align}\label{equ:6.41}
+R_0=\dfrac{k_2e_0s_0}{s_0+K_m}=\dfrac{Qs_0}{s_0+K_m},\hspace{5mm}K_m=\dfrac{k_{-1} +k_2}{k_1},\hspace{5mm}Q=[R_0]_{max} =k_2e_0,
+\end{align}
+where $Q=maximum/rate$.
+\begin{figure}[H]
+ \includegraphics[scale=0.5]{boo2}
+  \caption{Michaelis-Menten rate of uptake. $Q$ is the maximum rate and $K_m$ is the Michaelis constant.}
+  \label{figure1b}
+\end{figure}
+This rate of reaction seen in ( figure \ref{figure1b}) is typical for a biological point of view. Applying these dimensional terms to (\ref{equ:6.13}), the exact initial rate of the substrate is $\left[\dfrac{du}{d\tau}\right]_{\tau=0} =-1$ while for the complex it is $\left[\dfrac{dv}{d\tau}\right]_{\tau=0} =\dfrac{1}{\varepsilon}$. Using (\ref{equ:6.41}) we can deduce that the rate of reaction, which depends on time, is the magnitude of $\dfrac{ds}{dt}$ from the outer solution $\dfrac{du_0}{d\tau}$ and written in dimensional form
+\begin{align}\label{equ:6.42}
+\dfrac{ds}{dt}=-\dfrac{Qs}{K_m+s}.
+\end{align} 
+An important fact to be considered is that the maximum rate from (\ref{equ:6.41}), which is denoted by $Q=k_2e_0$, is reliant on the rate constant $k_2$ of the product reaction $SE\rightarrow P+E$. This is known as the rate limiting step in a reaction mechanism.\\
+Overall, an important fact to be considered is that when we use the Quasi-Steady State hypothesis we lose a degree of accuracy due to the fact we have considered $\varepsilon\dfrac{dv}{dt}$ to be negligible in (\ref{equ:6.13}), and also, the accuracy is lost when the results from the experiment cannot satisfy the initial conditions.\\
+However, this hypothesis is compensated by the Michaelis-Menton theory, which allows us to create a curve similar to (\ref{figure1b}). From this curve, we can deduce the maximum rate $Q$ and the Michaelis constant $K_m$. 
+\section{Suicide Substrate Kinetics}
+The suicide substrate system is an enzyme system represented by
+\begin{align}
+\begin{split}
+S+E \overset{k_1} {\underset{k_{-1}}{\rightleftharpoons}}X \overset{k_2}{\rightarrow}&Y \overset{k_3}{\rightarrow}E+P \\
+&\downarrow k_4 \\
+&E_i,
+\label{eq:lg26}
+\end{split}
+\end{align}
+where $E, S$ and $P$ respectively indicate enzyme, substrate and product, $X$ and $Y$ enzyme-substrates. $E_i$ is the inactivated enzyme and lastly, the $k$s indicate the positive rate constants. 
+\\
+In this model, $Y$ can follow two different paths: 
+\begin{itemize}
+\item The $k_3$ path brings to $E+P$,
+\item The $k_4$ that leads to $E_i$.
+\end{itemize}
+Suicides substrates are key to provide a way to target a specific enzyme for inactivation. In the real World, they are useful in drug administration as when suicide substrates are not harmful in their common form and can only be activated by a designated enzyme. They can be used to treat illnesses like depression, epilepsy and some sort of tumours. 
+
+By the laws of mass attraction, we can get the rate equations from (\ref{eq:lg26}), which are:
+\begin{equation}
+\frac{d[S]}{dt}=-k_1[E][S]+k_{-1}[X], \label{eq:lg28}
+\end{equation}
+\begin{equation}
+\frac{d[E]}{dt}=-k_1[E][S]+k_{-1}[X]+k_3[Y],
+\end{equation}
+\begin{equation}
+\frac{d[X]}{dt}=k_1[E][S]-k_{-1}[X]-k_2[X],
+\end{equation}
+\begin{equation}
+\frac{d[Y]}{dt}=k_2[X]-k_3[Y]-k_4[Y],
+\end{equation}
+\begin{equation}
+\frac{d[E_i]}{dt}=k_4[Y], \label{eq:lg29}
+\end{equation}
+\begin{equation}
+\frac{d[P]}{dt}=k_3[Y], \label{eq:lg27}
+\end{equation}
+
+where [ ] indicates the concentrations and $t$ is the time.
+Usually the initial conditions that complete the formulation are
+\begin{align}
+\begin{split}
+[E(0)]&=e_0, \quad [S(0)]=s_0 ,
+\\
+[X(0)]&=[Y(0)]=[E_i(0)]=[P(0)]=0.
+\end{split}
+\label{eq:lg34}
+\end{align}
+Here (\ref{eq:lg27}) is uncoupled, hence $[P]$ can be found by integration after $[Y]$ has been evaluated.
+
+By adding the equations (\ref{eq:lg28})-(\ref{eq:lg29}), the system can be further reduced using conservation of enzyme, giving
+\begin{equation}
+\frac{d}{dt}\{[E]+[X]+[Y]+[E_i]\}=0,
+\end{equation}
+\begin{equation}
+\Rightarrow [E]+[X]+[Y]+[e_i]=e_0.
+\label{eq:lg30}
+\end{equation}
+
+From (\ref{eq:lg30}), $[E]$ can be eliminated , obtaining a reduced system
+\begin{align}
+\begin{split}
+\frac{d[S]}{dt}&=-k_1(e_0-[X]-[Y]-[E_i])[S]+k_{-1}[X], \\
+\frac{d[X]}{dt}&=k_1(e_0-[X]-[Y]-[E_i])[S]-(k_{-1}+k_2)[X], \\
+\frac{d[Y]}{dt}&=k_2[X]-(k_3+k_4)[Y], \\
+\frac{d[E_i]}{dt}&=k_4[Y].
+\end{split}
+\label{eq:lg32}
+\end{align}
+
+This system can be nondimensionalised in many ways. Since $\frac{e_0}{s_0}=O(1)$, following the procedure of the previous chapter, is equivalent to (\ref{equ:6.2}) for the outer region and (\ref{equ:6.22}) for the inner region.
+
+The variables are nondimansinalised by setting
+\begin{align}
+\begin{split}
+[S]&=s_0s, \quad [X]=\frac{e_0s_0}{s_0+K_m}x, \\
+[Y]&=e_0y, \quad [E_i]=e_0e_i.
+\end{split}
+\label{eq:lg31}
+\end{align}
+Here,
+
+\begin{equation}
+K_m=\frac{k_{-1}+k_2}{k_1}.
+\end{equation}
+The fast-transient time-scale is (cf. (\ref{equ:6.2})) taken as 
+\begin{equation}
+\tau=\frac{t}{t_c}=tk_1(s_0+K_m),
+\end{equation}
+and the quasi-steady state time-scale as
+\begin{equation}
+T=(1+\rho)\frac{t}{t_s}=t\varepsilon(k_{-1}+k_2)(1+\rho),
+\label{eq:lg46}
+\end{equation}
+with $\rho$ as in (\ref{eq:lg33}) below and
+\begin{equation}
+\varepsilon=\frac{e_0}{e_0+K_m}.
+\label{eq:lg36}
+\end{equation}
+Using the scaling in (\ref{eq:lg31}) with $\tau$ as the time-scale , equations equals (\ref{eq:lg32}) for the fast-transient phase are
+\begin{align}
+\begin{split}
+\frac{ds}{d\tau}&=\varepsilon \left[-s+\frac{\sigma}{1+\sigma}sx+sy+se_i+\frac{\rho}{(1+\rho)(1+\sigma)}x\right], \\
+\frac{dx}{d\tau}&=s-\left(\frac{\sigma}{1+\sigma}\right)sx-sy-se_i-\frac{x}{1+\sigma}, \\
+\frac{dy}{d\tau}&=\left(\frac{\sigma}{(1+\sigma)^2(1+\rho)}\right)x-\left(\frac{\psi}{(1+\sigma)}\right)y,\\
+\frac{de_i}{d\tau}&=\left(\frac{\phi}{1+\sigma}\right)y,
+\end{split}
+\label{eq:lg32}
+\end{align}
+where
+\begin{equation}
+\sigma=\frac{s_0}{k_m}, \quad \rho=\frac{k_{-1}}{k_2}, \quad \psi=\frac{k_3+k_4}{k_{-1}+k_2}, \quad \phi=\frac{k_4}{k_{-1}+k_2}.
+\label{eq:lg33}
+\end{equation}
+The previous initial conditions (\ref{eq:lg34}), after applying (\ref{eq:lg31}) become
+\begin{equation}
+s(0)=1, \quad x(0)=0, \quad y(0)=0, \quad e_i(0)=0. 
+\label{eq:lg37}
+\end{equation}
+The inner solution are given from the equations (\ref{eq:lg32}), which are equivalent to (\ref{equ:6.21}) from before.
+
+While, given $T$ as the time-scale, the rate equations for the outer quasi-steady state phase are;
+\begin{align}
+\begin{split}
+\frac{ds}{dT}&=-s[(\sigma +1)-\sigma x-(\sigma+1)y-(\sigma +1)e_i]+\frac{\rho}{1+\rho}x, \\
+\varepsilon \frac{dx}{dT}&=s[(\sigma+1)-\sigma x-(\sigma +1)y-(\sigma +1)e_i]-x ,\\
+\varepsilon \frac{dy}{dT}&=\left(\frac{\sigma}{(1+\sigma)(1+\rho)}\right)x-\psi y, \\
+\varepsilon \frac{de_i}{dT}&=\phi y,
+\end{split}
+\label{eq:lg35}
+\end{align}
+where $\varepsilon$, $\sigma$, $\rho$, $\phi$ and $\psi$ are given by (\ref{eq:lg33}), and they are equivalent to (\ref{equ:6.23}).
+\\
+We will determine these parameters with the asymptotic technique method, that we will explore in more depth now.
+
+
+\textbf{Asymptotic Technique and Solutions}
+\\
+\\
+We now exploit the fact that in the equation (\ref{eq:lg36}) $\varepsilon$ is almost zero ($0<\varepsilon \ll 1$) and solve the equation by the singular perturbation model. 
+
+
+Consider inner solutions first, we start with the fast-transient phase equation analysed in (\ref{eq:lg32}), with initial conditions from (\ref{eq:lg37}). As $\varepsilon$ is almost zero, we have to search for a Taylor series solution in the form 
+\begin{equation}
+s(\tau)=s^{(0)}(\tau)+\varepsilon s^{(1)}(\tau)+\varepsilon ^2s^{(2)}(\tau)+\dots ,
+\label{eq:lg45}
+\end{equation}
+for the variables $s$, $x$, $y$ and $e_i$. Once we substitute this in the equations (\ref{eq:lg32}) and equate like powers of $\varepsilon$, we find
+\begin{equation}
+\frac{ds^{(0)}}{d\tau}=0, \quad \frac{dy^{(0)}}{d\tau}=-\frac{\psi}{1+\sigma}y^{(0)}.
+\end{equation}
+When combined with (\ref{eq:lg37}), gives the unique solutions $s^{(0)}(\tau)\equiv1$, $y^{(0)}(\tau)\equiv0$. Like the last equation from (\ref{eq:lg32}) yields for $O(1)$,
+\begin{equation}
+\frac{de_i^{(0)}}{d\tau}=-\frac{\phi}{1+\sigma}y^{(0)}=0.
+\end{equation}
+This implies that $e_i^{(0)} \equiv 0$, since $e_i(0)=0$. Substituting these series of solution into the last equation of (\ref{eq:lg32}), we get the result
+\begin{equation}
+\frac{dx^{(0)}}{d\tau}=s^{(0)}-s^{(0)}y^{(0)}-s^{(0)}e_i^{(0)}-\frac{x^{(0)}}{1+\sigma}-\frac{\sigma s^{(0)}x^{(0)}}{1+\sigma}.
+\end{equation}
+Using the solutions for $s^{(0)}$, $y^{(0)}$ and $e_i^{(0)}$, the above equation will become
+\begin{equation}
+\frac{dx^{(0)}}{d\tau}=1-x^{(0)},
+\end{equation}
+given $x(0)=0$. This results in $x^{(0)}(\tau)=1-e^{-\tau}$.
+
+If we want to get nonzero solutions for $y$ and $e_i$, the $O(\varepsilon)$ terms, $y^{(0)}(\tau)$ and $e_i^{(0)}(\tau)$ have to be determined. To do such thing the terms of $O(\varepsilon)$ have to be matched.
+
+Combining (\ref{eq:lg36}) with (\ref{eq:lg33})
+\begin{equation}
+\varepsilon=\frac{e_0}{s_0(1+K_m/s_0)}=\frac{e_0}{s_0}\frac{\sigma}{1+\sigma},
+\end{equation}
+which implies that
+\begin{equation}
+\sigma=(\frac{s_0}{e_0})\varepsilon +O(\varepsilon^2).
+\end{equation}
+Thus, as $\frac{s_0}{e_0}=O(1)$, it is implied that $\sigma=O(\varepsilon)$. Here we introduce a similarity variable for $\sigma$, where
+\begin{equation}
+\sigma=\varepsilon p.
+\label{eq:lg38}
+\end{equation}
+Also $p$ is a constant of $O(1)$. We show the $\varepsilon$ factor explicitly so that it can be matched with the $O(\varepsilon)$ term. We can equate the terms of $O(\varepsilon)$ by substituting (\ref{eq:lg38}) for $\sigma$ in the third equation of (\ref{eq:lg32}):
+\begin{equation}
+y^{(1)}(\tau)=\frac{p}{\psi(1+\rho)}\left(\frac{1-e^{-\psi\tau}}{\psi}+\frac{e^{-\psi\tau}-e^{-\tau}}{\psi -1}\right).
+\end{equation}
+Thus, matching the coefficients from the last equation of (\ref{eq:lg32}) to $O(\varepsilon)$ gives an equation for $\frac{de_i}{d\tau}$ in terms of $y^{(1)}$. Therefore, the solution will be 
+\begin{equation}
+e_i^{(1)}=\frac{\phi p}{(1+p)}\left(\frac{\tau}{\psi}+\frac{e^{-\tau}-1}{\psi -1}+\frac{1-e^{-\psi \tau}}{\psi^2(\psi-1)}\right).
+\end{equation}
+
+
+In order to get $e_i^{(1)}$, it is assumed that $\phi=O(1)$. In the case where $\phi=O(\varepsilon)$, another similarity variable, $q=\varepsilon \phi$, should have been used, and found that $e_i^{(1)}(\tau)$, but that $e_i^{(2)}(\tau)$ gives the same result as $e_i^{(1)}(\tau)$ above.
+
+The coefficients of higher-order can be found in a similar way, for example, the $O(\varepsilon)$ terms of the first equation of (\ref{eq:lg32}) give
+\begin{equation}
+s^{(1)}(\tau)=-\frac{\tau}{1+\rho}+\frac{\rho}{1+\rho}(e^{-\tau}-1).
+\end{equation}
+The initial conditions in (\ref{eq:lg37}) are satisfied by all these solutions.
+\\
+
+For the outer solutions, we proceed by looking in the long time-scale which gives the quasi-steady state approximation. Firstly, we have to match the two time period solutions. Generally, the initial conditions are not satisfied in these long time-scale solutions.
+
+Here we look for solutions to (\ref{eq:lg35}) in the form
+\begin{equation}
+s(T)=s_0(T)+\varepsilon s_{(1)}(T)+\varepsilon^2 s_{(2)}+\dots ,
+\label{eq:lg39}
+\end{equation}
+for each of the variables $s$, $x$, $y$ and $e_i$. We have to substitute this in the equations (\ref{eq:lg35}) and again equate the coefficients of $\varepsilon$. Here, to solve the undetermined constants of integration, we have to use the method of matched asymptotic expansions. Which is when the inner solution as $\tau \rightarrow \infty$ has to be matching the outer solution as $T \rightarrow 0$.
+
+Now, as $\sigma=\varepsilon p=O(\varepsilon)$ from (\ref{eq:lg38}) and taking the $O(1)$ terms, we get
+\begin{equation}
+0=s_{(0)}-s_{(0)}y_{(0)}-x_{(0)} -s_{(0)}e_{i(0)},
+\end{equation}
+from the second equation of (\ref{eq:lg35}). Also assuming  from the last equation of the set (\ref{eq:lg35}) $\phi=O(1)$ and $y_{(0)}=0$, then we get
+\begin{equation}
+x_{(0)}=s_{(0)}(1-e_{i(0)}).
+\label{eq:lg40}
+\end{equation}
+Similarly, it can be obtained 
+\begin{equation}
+y_{(1)}=\frac{p}{\phi(1+\rho)}x_{(0)}.
+\label{eq:lg41}
+\end{equation}
+In order to equate coefficients further, the order of the magnitude of each of the terms has to be determined. There are only two possible outcomes, either all of the substrate is exhausted or all of the enzyme is inactivated. This corresponds to $\phi=O(1)$ with $\psi=O(1)$, and $\psi=O(1)$ with $\phi=O(\varepsilon)$ (referring to (\ref{eq:lg33}) for the parameter relations). 
+\\
+We must solve the equations for each of these sets of constraints.
+\\
+
+\textbf{Case 1} \quad $\rho=O(1), \quad \psi=O(1), \quad \phi=O(1)$
+\\
+\\
+In this case all the rate constants are of the same order of magnitude.
+\\
+By assuming that $\phi=O(1)$, the first equation in (\ref{eq:lg35}) with (\ref{eq:lg38}), (\ref{eq:lg39}) and (\ref{eq:lg40}) give
+\begin{equation}
+\frac{ds_{(0)}}{dT}=-\frac{1}{1+\rho}s_{(0)}(1-e_{i(0)}).
+\label{eq:lg44}
+\end{equation}
+From the second equation in (\ref{eq:lg35}) with (\ref{eq:lg38}), (\ref{eq:lg39}), (\ref{eq:lg40}) and (\ref{eq:lg41}), we get
+\begin{equation}
+\frac{de_{i(0)}}{dT}=\frac{\phi\rho}{\psi(1+\rho)}s_{(0)}(1-e_{i(0)}).
+\end{equation}
+By dividing and integrating the last two equations we get
+\begin{equation}
+e_{i(0)}(T)=\frac{1}{\beta}(B-s_{(0)}(T)),
+\label{eq:lg43}
+\end{equation}
+where $B$ is an constant of integration and
+\begin{equation}
+\beta=\frac{\psi}{\phi \rho}.
+\end{equation} 
+To determine $B$, we use the matching condition discussed in the previous section. This is the condition that $s_{(0)}(T), x_{(0)}(T), y_{(0)}(T)$ and $e_{i(0)}(T)$ as $T\rightarrow 0$ must match the values, respectively, of $s^{(0)}(\tau),x^{(0)}(\tau),y^{(0)}(\tau)$ and $e_i^{(0)}(\tau)$ as $\tau\rightarrow\infty$. We know that $s^{(0)}(\tau)\equiv 1, x^{(0)}(\tau)\equiv 1-e^{-\tau}, y^{(0)}(\tau)\equiv 0,e_i^{(0)}(\tau)\equiv 0$ so the conditions on the $O(1)$ outer solution are
+\begin{equation}
+s_{(0)}(T)\rightarrow 1, \quad x_{(0)}(T)\rightarrow 1, \quad y_{(0)}(T)\rightarrow o, \quad and \quad se_{i(0)}(T)\rightarrow 0, \quad as \quad T\rightarrow0.
+\label{eq:lg42}
+\end{equation}
+From these we see that $B=1$ from (\ref{eq:lg43}), and from this , substituting in (\ref{eq:lg44}), gives
+\begin{equation}
+\frac{ds_{(0)}}{dT}=-\frac{(\beta -1)}{\beta(1+\rho)}s_{(0)}\left[1-\frac{s_{(0)}}{1-\beta}\right].
+\end{equation}
+After integration and after applying the conditions as $T\rightarrow0$ from (\ref{eq:lg42}) gives $s_{(0)}(T)$ and $e_{i(0)}(T)$ as
+\begin{align}
+\begin{split}
+s_{(0)}(T)&=\frac{1-\beta}{1-\beta e^{T[1-(1/\beta)]/(1+\rho)}},\\
+e_{i(0)}(T)&=\frac{1-s_{(0}(T)}{\beta}.
+\end{split}
+\end{align}
+\\
+
+\textbf{Case 2} \quad $\rho=O(1), \quad \psi=O(1), \quad \phi=O(\varepsilon)$
+\\
+\\
+Assuming $\phi=O(\varepsilon)$ gives
+\begin{equation}
+s_{(0)}(T)=e^{-T/(1+\rho)}, \quad e_{i(0)}=0, \quad \varepsilon e_{i(1)}(T)=\frac{1-e^{-T/(1+\rho)}}{\beta},
+\end{equation}
+where yet again the inner solutions are matched.
+
+We can find more inner and outer solutions to solve for terms of higher-order of $\varepsilon$ in the series (\ref{eq:lg45}) and (\ref{eq:lg39}). This solutions will be linear, but they get more complicated.
+\\
+\\
+\textit{Uniformly Valid Solution for all Time}
+\\
+\\
+As we now have solution for the fast transient and quasi-steady state time periods, we can obtain composite solutions, which are valid for all time $t\ge0$ by a simple method. We add the first inner solution term with the corresponding outer solution term and we subtract their common part, the limit of the inner solution as time ($\tau$) foes to infinity, which is the same as the limit of the outer solution as time ($T$) tends to zero. Both this limits are equal to 1, therefore the composite solution will be 
+\begin{equation}
+s_{\text{c}}^0=1+e^{-T/(1+\rho)}-1=e^{-t/t_s}=e^{-\varepsilon(k_{-1}+k_2)t}.
+\end{equation}
+on using (\ref{eq:lg46}).
+
+As we continue doing this for the other solutions we get two sets of composite solutions: Set 1 and Set 2. They are both valid for all time.
+
+
+Set 1:
+\begin{align}
+\begin{split}
+s_{\text{c}}^0(t)&=\frac{1-\beta}{1-\beta e^{(1-1/\beta)/t_s}}, \quad e_{i \text{ c}}^0(t)=\frac{1-s_{\text{c}}^0}{\beta}, \\
+x_{\text{c}}^0(t)&=s_{\text{c}}^0(1-e_{i \text{ c}}^0)-e^{-t/t_c}, \quad y_{\text{c}}^0=0, \\
+\varepsilon y_{\text{c}}^1(t)&=\frac{\sigma}{\psi(1+\rho)}\left(\frac{e^{-\psi t/t_c}-\psi e^{-t/t_c}}{\psi -1}+s_{\text{c}}^0(1-e_{\text{c}}^0)\right).
+\end{split}
+\end{align}
+
+Set 2:
+\begin{align}
+\begin{split}
+s_{\text{c}}^0(t)&=e^{-t/t_s}, \quad e_{i \text{ c}}^0(t)=0, \quad \varepsilon e_{i \text{ c}}^1(t)=\frac{1-s_{\text{c}}^0}{\beta}, \\
+x_{\text{c}}^0(t)&=s_{\text{c}}^0-e^{-t/t_c}, \quad y_{\text{c}}^0(t)=0, \\
+\varepsilon y_{\text{c}}^1&=\frac{\sigma}{\psi(1+\rho)}\left(\frac{e^{-\psi t/t_c}-\psi e^{-t/t_c}}{\psi -1}+s_{\text{c}}^0\right).
+\end{split}
+\end{align}
+Where $\beta=\frac{\psi}{\phi p}$ and $\sigma$, $\rho$ and $\psi$ are the same as (\ref{eq:lg33}).
+
+Note that if $\beta<1$ Set 1 holds, while if $\beta>1$ then Set 2 holds. These directly relate to the amount of inactivated enzyme discussed previously.
+\\
+\\
+\textit{Numerical solutions and Comparison with Analytic Solutions}
+\\
+\\
+To highlight their accuracy, we have approximate asymptotic solutions to the nondimensionalised systems to compare with the numerical solutions.
+
+To get the numerical solution, the dimensional system (\ref{eq:lg32}) has to be solved numerically. Since the analysis was brought out on the dimensional system, we have to multiply the nondimensional concentrations by their scale factors.
+
+\begin{figure}[h]
+\includegraphics[scale=0.4]{lg63}
+\label{fig:lg63}
+\caption{graph (a) represent the substrate concentration for the various solutions, while (b) the inactive enzyme concentrations. Assuming the parameters are: $k_1=2, k_{-1}=4, k_2=12, k_3=10, k_4=2, e_0=0.5, s_0=0.5$. These gives $\varepsilon=5.88\times 10^{-2}, \rho=0.333, \beta=5.647$.}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.4]{lg64}
+\label{fig:lg64}
+\caption{This represent the composite solutions compared the numerical ones, for $X$ and $Y$, the intermediate concentrations. Assuming the parameters are the same as the previous figure.}
+\end{figure}
+
+These intermediate results, $X$ and $Y$, are more accurate than any quasi-steady state method can achieve. 
+
+The above results show how analytical solutions are a good approximation of the suicide substrate kinetics represented by (\ref{eq:lg26}). The analysis is much more involved than the basic enzyme reaction (\ref{equ:6.1}) but the reaction is not more complicated compared to it. 
+\\
+\section{Cooperative phenomena}
+In the model $S+E \overset{k_1} {\underset{k_{-1}}{\rightleftharpoons}}SE \overset{k_2}{\rightarrow}P+E $,
+an enzyme molecule combines with a substrate molecule. A reaction between these two molecules is called cooperative if an enzyme can bind with a substrate molecule at a site after having bound with a different substrate molecule at a different site. This is a common phenomena. Another important cooperative behaviour, known as the allosteric effect, or allostery, is when an enzyme that has bound with several substrate molecules, can affect the binding activity of other substrate molecules at different sites. The enzyme displaying this behaviour is known as allosteric enzyme. A substrate is known as activator if it binds at one site it increases the activity of binding at a different site. On the other hand, if it decreases the activity then it is an inhibitor.
+Consider the example where an enzyme has 2 binding sites, this model consists of an enzyme $E$ which binds a substrate molecule $S$. This forms a single bond substrate-enzyme complex, $C_1$. When this complex breaks down it forms a product $P$ and again the enzyme. It can also join with a different substrate molecule to form a new dual bound substrate-enzyme complex $C_2$, which breaks down to form the product and the complex $C_1$. As represented by the equation:
+\begin{equation}
+\label{eq:lg19}
+S+E \overset{k_1} {\underset{k_{-1}}{\rightleftharpoons}}C_1 \overset{k_2}{\rightarrow}P+E, \quad \quad
+S+C_1 \overset{k_3} {\underset{k_{-3}}{\rightleftharpoons}}C_2 \overset{k_4}{\rightarrow}P+C_1,
+\end{equation}
+where $k$s are the rate constants as indicated.
+\\
+Applying the law of mass attraction to (\ref{eq:lg19}) with the concentrations, denoted with the lower case, we get;
+
+\begin{align}
+\label{eq:lg20}
+\begin{split}
+\frac{ds}{dt}&=-k_1se+(k_{-1}-k_3s)c_1+k_3c_2, \\
+\frac{dc_1}{dt}&=k_1se-(k_{-1}+k_2+k_3s)c_1+(k_{-3}+k_4)c_2, \\
+\frac{dc_2}{dt}&=k_3sc_1-(k_{-3}+k_4)c_2, \\
+\frac{de}{dt}&=-k_1se+(k_{-1}+k_2)c_1, \\
+\frac{dp}{dt}&=k_2c_1+k_4c_2.
+\end{split}
+\end{align}
+The initial conditions are
+\begin{equation}
+\label{eq:lg21}
+s(0)=s_0, \quad e(0)=e_0, \quad c_1(0)=c_2(0)=p(0)=0.
+\end{equation}
+By adding the 2nd, 3rd and 4th equations in (\ref{eq:lg20})and using the initial conditions we get
+\begin{equation}
+\label{eq:lg22}
+\frac{dc_1}{dt}+\frac{dc_2}{dt}+\frac{de}{dt}=0 \quad \Rightarrow \quad
+ e+c_1+c_2=e_0.
+\end{equation}
+The equation for the product $p(t)$ is given by integration once $c_1$ and $c_2$ have been found. This results in us getting the system:
+\begin{align}
+\label{eq:lg23}
+\begin{split}
+\frac{ds}{dt}&=-k_1e_0s+(k_{-1}+k_1s-k_3s)c_1+(k_1s+k_{-3})c_2, \\
+\frac{dc_1}{dt}&=k_1e_0s-(k_{-1}+k_2+k_1s+k_3s)c_1+(k_{3}+k_4-k_1s)c_2,\\
+\frac{dc_2}{dt}&=k_3sc_1-(k_{-3}+k_4)c_2,
+\end{split}
+\end{align}
+applying the initial conditions from (\ref{eq:lg21}).
+\\
+
+Like in the previous cases, the system has to be nondimensionalised. There are many ways to do this, but if we take $\frac{e_0}{s_0}\ll 1$, we write
+\begin{equation}
+\tau =k_1e_0t, \quad u=\frac{s}{s_0}, \quad v_1=\frac{c_1}{s_0}, \quad v_2=\frac{c_2}{e_0}, \notag
+\end{equation}
+\begin{equation}
+\quad a_1=\frac{k_{-1}}{k_1s_0}, \quad a_2=\frac{k_2}{k_1s_0}, \quad a_3=\frac{k_3}{k_1}, 
+\end{equation}
+\begin{equation}
+\quad a_4=\frac{k_{-3}}{k_1s_0}, \quad a_5=\frac{k_4}{k_1s_0}, \quad e=\frac{e_0}{s_0}. \notag
+\end{equation}
+\\
+Therefore, (\ref{eq:lg23}) becomes
+\begin{align}
+\label{eq:lg24}
+\frac{du}{d\tau}&=-u+(u-a_3u+a_1)v_1+(a_4+u)v_2=f(u,v_1,v_2), \\
+\varepsilon\frac{dv_1}{d\tau}&=u-(u+a_3u+a_1+a_2)v_1+(a_4+a_5-u)v_2=g_1(u,v_1,v_2), \\
+\varepsilon\frac{dv_2}{d\tau}&=a_3uv_1-(a_4+a_5)v_2=g_2(u,v_1,v_2),
+\end{align}
+with the following initial conditions
+\begin{equation}
+\label{eq:lg25}
+u(0)=1, \quad v_1(0)=v_2(0)=0.
+\end{equation}
+\section{Multiple Steady States, Mushrooms and Isolas}
+\textit{Multiple Steady States}
+\\
+\\
+Multiple steady states take place when a parameter in the model passes through a bifurcation value, whereas one steady state occurs and behaves qualitatively  when the model passes through fixed values.  These types of steady states were explored in chapter3. The comparison between one steady state and multiple steady states can be seen in (Figure \ref{figure1c}a), where the dotted line is the multiple steady states compared to the line going through the bifurcation value, whilst a typical state dependent on the parameter can be seen by the solid line. 
+\\
+\\
+\textit{Mushrooms}
+\\
+\\
+Figure \ref{figure1c} displays the early transition of the generic form of the disparity of a steady state, from when the model passes through a standard parameter when it passes through a bifurcation value, which cause multiple steady states to be formed. This is because the behaviour of the graph becomes more erratic. The development of a curve from a basic a standard curve to a mushroom like curve can be seen in (Figure \ref{figure1c}b) where two regions in the $p$-space are being formed meaning that multiple steady states are also being formed. In this case we can see there are 3 steady states formed in (Figure \ref{figure1c}b). Branches $CD$ and $GH$ have unstable steady states on them.
+\\
+\\
+\textit{Isolas}
+\\
+\\
+The word Isola comes from the term isolated closed curves which can be seen in (Figure \ref{figure1c}c), where a separate breakaway region has been as a continuation of the mushroom like shape formed in (Figure \ref{figure1c}b). The name given to this type of behaviour is an Isola. 
+
+\begin{figure}
+ \includegraphics[scale=0.9]{mushroom}
+  \caption{a) Shows a steady state dependent on a parameter. b) Shows Mushroom dependence of the steady staes as a function of parameter $p$. c) Continuation of Mushroom independence leading to an Isola being formed.}
+  \label{figure1c}
+\end{figure}
+The behaviour of Isolas is rather different to a Mushroom. The first fact to be considered is that there is no hysteresis. Hysteresis occurs when there are abrupt changes in the value of $u_s$. Since $U_s$ stay on the branch $ABIJ$ as the parameter $p$ increases from $p<p_1$ to $p>p_2$. In fact, $u_s$ just stays on the branch on the return sweep through the multi-steady state region $p_1<p<p_2$. Isolas can only form on branches and can only be formed of solutions of nonlinear equations.\\
+Another fact to be considered is that in Figure \ref{figure1c}, if $u_s$ lies on $BI$, then it could only  possibly move onto the other stable branch which is $DFG$. However, this can only happen if $u_s$ has a finite perturbation so that $u_s$ moves in the domain of attraction which we explored in chapter 2. \\
+We just explored the analytical approach to multiple steady states. Dellwo et al (1982) presented a theory on the analytical structure of Isolas. He believed that Isolas tend to a point, as some parameters tend to a critical value. Application of Isolas to the real World, can be seen in chemical reactions. Gray and Scott (1983,1986) shared a kinetic model system which included multi-steady states with Mushrooms and Isolas in a reaction that involves auto-catalysis in a continuously stirred tank reactor (CSTR). This can be seen in further detail in the book referred to at the beginning of the J.D.Murray's Mathematical Biology. 
+\chapter{Appendix}
+\begin{figure}[H]
+ \includegraphics[scale=0.5]{alpha1}
+  \caption{Shows a phase portrait when $alpha>0$ and the steady state is unstable.}
+  \label{figure3}
+\end{figure}
+\begin{figure}[H]
+ \includegraphics[scale=0.5]{alpha2}
+  \caption{Shows a phase portrait when $alpha>0$ and the steady state is unstable.}
+  \label{figure3}
+\end{figure}
+
+\chapter{Conclusion}
+As a result,  we understand that Mathematical Biology is a very complex system. In this project, we have explored this through Reaction Kinetics in different cases. Normally, Reaction Kinetics can be formulated into a nonlinear ODE system. The idea behind Reaction Kinetics is the Law of Mass Action. To estimate the time scales, we have to nondimensionalise the system to satisfy the quasi-steady state estimate.
+\\
+By visualising the ODE system, a phase plane can be used to determine whether the systems are stable or not.  We have learnt that Bifurcation diagram is a combination of a phase plane with a changing value of parameter, which gives the future behaviour of the system. Therefore, it is always a benefit to visualise Mathematics to understand systems.
+\\
+Leading on, we went into a lot of detail regarding many different types of stability and how, by determining the steady states, we can derive the stability of a nonlinear system. We tried to define stability, but realised that there are many different types, therefore we only considered three types. However, we also gained a further insight into Lyapunov’s theorems in stability , which he created in order to determine whether a stationary point is stable or unstable. This provided us with information for the chapter regarding Michaelis-Menten Quasi-Steady states hypotheses . On the other hand, we learnt that this hypotheses may be was floored due to the fact the changes of these reactions take place in a dimensionless time, where the time frame is small. Many experiments are unable to measure these rapid changes which suggests that calculating this is pointless because it is never observed. This means that many systems only satisfy the initial conditions of the reaction which means it is in a steady state. However, when using Michaelis-Menten Quasi-Steady State hypothesis, we lose a significant level of accuracy due to the fact that we consider $\varepsilon=\frac{dv}{dt}$ to be negligible when it is not. Here, we see how the basic concept of steady states is applied to complex biological processes.
+\\
+Another topic we explored was generic multiple steady states and how these compare to the generic cases of steady states with qualitative parameters to more complex cases. We see that if the parameter in the model goes through a bifurication value, then it would cause multiple steady states to be formed. This is be seen in biochemical processes with regards to autocatalysis in continuously stirred tank [CSTR]. 
+\\
+We have now learnt how the rate equations for the Kinetics of Suicide Substrate are a set of nonlinear equations. We have also learnt the technique to find asymptotic solutions for both inner and outer solutions. This allows us to form uniformly valid solutions for all time.
+\\
+Although, we have discussed a lot on ODE systems in Reaction Kinetics, there is still a lot of application of it in the real World. Examples of this are: Biological Oscillates, Belousov-Zhabotinskii Reaction and Perturbed and Coupled Oscillators. For additional reading we could study more in detail about Partial Differential Equations(PDE), as it can be applied to biochemical and biological processes, which will further enhance this study. Examples of this application are s Structured Population Dynamics, Pattern Formation and Chemotaxis.
+
+\begin{thebibliography}{99}
+\bibitem{Mathematical Biology}
+J.D.Murray \textit{Mathematical Biology.}\emph{Berlin: Springer-Verlag, 2003. Print}
+\bibitem{Mathematical Biology: I. An Introduction.}
+\textit{Mathematical Biology: I. An Introduction. New York, NY: Springer New York, 2004. Print.}
+\bibitem{2010_Course_MiB_article.pdf}
+Dr Guy-Bart Stan
+\url{http://www.bg.ic.ac.uk/research/g.stan/2010_Course_MiB_article.pdf} Imperial College accessed 12/12/2016
+\bibitem{ORDINARY DIFFERENTIAL}
+William A. Adkins, Mark G. Davidson\textit{ Ordinary Differential Equations}  
+\bibitem{Systems and Synthetic Biology.}Singh, Vikram.\textit{Systems and Synthetic Biology. Dordrecht: Springer, 2015. Print.}
+\bibitem{Mathematical Biology.1989}
+Murray, James Dickson.\textit{Mathematical Biology Berlin: Springer, 1989. Print.}
+\bibitem{Stability, Instability and Chaos.}Glendinning, Paul.\textit{Stability, Instability and Chaos. N.p.: Cambridge UP, 1993. Print.}
+\bibitem{Nonlinear Dynamical Systems and Control: A Lyapunov-Based Approach}
+Wassim M. Haddad \textit{Nonlinear Dynamical Systems and Control: A Lyapunov-Based Approach 02/28/2008}
+\bibitem{Nonlinear Systems}
+Philip G. Drazin \textit{Nonlinear Systems Cambridge Univ. Press Cambridge 2002}
+\bibitem{MA591 Mathematical Biology}
+Dr.J.P.Wang \textit{Mathematical Biology University of Kent  MA591 Lecture Notes 2015}
+\bibitem{MA590 Mathematical Modelling}
+Dr Steffen Krusch, Dr Pavlos Xenitidis  \textit{Mathematical Modelling  University of Kent Lecture MA590 Notes 2015}
+\bibitem{MA587 Numerical Solution of Differential Equations}
+Dr John Pearson, Dr Kuan Xu \textit{Numerical Solution of Differential Equations University of Kent Lecture MA587 Notes 2016}
+
+\bibitem{c}
+\textit{PhasePlane}
+\url{www.google.co.uk/search?q=&tbm=isch&tbs=rimg:CTaRDnWyac5ZIjh3Cc4EssQ8oTgzG5rD_1bGe9rFwQPM70jv_1g8TUwqsl-RzTfTaSQoUS0p8GuUAkQ9f5p1Pg70SVQyoSCXcJzgSyxDyhEfA1BhGqOnt3KhIJODMbmsP9sZ4R5s2CaUZUqqwqEgn2sXBA8zvSOxHTwwwZyy1MnioSCf-DxNTCqyX5EUutsKDmIA_1PKhIJHNN9NpJChRIR0SJvL99RfTQqEgnSnwa5QCRD1xECnY-18IHtzyoSCfmnU-DvRJVDEZMC8z4Ozg8V&tbo=u&sa=X&ved=0ahUKEwiV1Naa3bXSAhXJXBQKHS3pDGEQ9C8IGw&biw=1920&bih=974&dpr=1} Last Accessed 01 march 2017
+
+\bibitem{lg1}
+\textit{Predator-Prey}
+\url{http://www.bapp.org/images/science/puma-prey-graph.png} Last accessed 01 march 2017.
+
+\bibitem{lg2}
+\textit{Harvesting Population Model}
+\url{http://tashian.com/carl/docs/harvesting/Image33.gif} Last accessed 01 march 2017.
+
+
+\bibitem{lg3}
+\textit{Logistic Growth}
+\url{https://figures.boundless-cdn.com/21346/large/figure-45-03-01.jpe} Last accessed 01 march 2017.
+
+\end{thebibliography}
+
+
+
+\end{document}
